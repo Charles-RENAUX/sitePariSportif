@@ -1,0 +1,278 @@
+@font-face {
+    font-family: "RalewayRegular";
+    src: url("fonts/Raleway-Regular.woff2") format("woff2"),
+        url("fonts/Raleway-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "RalewayThin";
+    src: url("fonts/Raleway-Thin.woff2") format("woff2"),
+    url("fonts/Raleway-Thin.ttf") format("truetype");
+}
+
+body {
+    font-family: RalewayRegular, Verdana, sans-serif;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: RalewayThin, Verdana, sans-serif;
+}
+
+@media only screen and (min-width: 750px) { /* Affichage en mode flex que sur grand écran, sur petit écrans on veut un affichage en flux classique */
+#section-principale {
+    display: flex;
+    justify-content: space-between;
+}
+}
+
+/** ENTETE **/
+
+header {
+    background-color: #dddddd;
+}
+
+h1 {
+    margin: 0;
+    padding: 0.3em;
+    font-weight: lighter;
+    font-size: 3em;
+}
+
+header ul {
+    list-style-type: none;
+    height: 100%;
+    margin: 0;
+
+}
+
+header  a {
+    color: darkred;
+    background-color: white;
+    margin: 1em;
+    padding: 1em;
+    text-decoration: none;
+
+    transition: all 0.5s;
+}
+
+header a:hover {
+    color: red;
+    background-color: #eeeeee;
+    transition: all 0.5s;
+}
+
+@media only screen and (min-width: 750px) {
+    header h2 {
+        display: none; /* On n'affiche pas le lien navigation sur grand écran */
+    }
+    header {
+        display: flex; /* Affichage flex que sur grand écran */
+    }
+    header ul {
+        display: flex;
+        align-items: center;
+    }
+    header a:hover { /* Bordure arrondie du menu que pour les grands écrans */
+        border-radius: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 750px) { /* Styles spécifiques petits écrans */
+    h1 { /* Diminution de la taille du titre & texte centré */
+        text-align: center;
+        font-size: 2em;
+    }
+    header h2 { /* menu navigation */
+        text-align: center;
+        font-size: 0.7em;
+        margin: 0.3em;
+        cursor: pointer;
+    }
+
+    header h2::before, header h2::after { /* fleches avant et après le titre du menu de navigation */
+        content: " \25be  "; /* caractère unicode encadré par des espaces, on ajoute un espace en plus à la fin pour que le caractère ne soit pas collé au titre navigation */
+    }
+    header nav:hover h2::before, header nav:hover h2::after { /* cf au-dessus */
+        content: " \25b4  ";
+    }
+    header nav {
+        background-color: #cccccc; /* couleur de fond */
+        padding: 1px; /* padding pour avoir un cadre autour de nos 2 éléments du menu */
+    }
+    header ul {
+        padding-left: 0; /* surcharge du comportement par défaut du navigateur : les listes on une marge à gauche pour permettre l'ajout d'une puce */
+        display: none; /* par défaut on n'affiche pas le menu, celui-ci apparaitra au survol de la souris*/
+    }
+
+    header nav:hover ul{
+        display: block; /* affichage du menu de navigation lorsque l'on survol l'élément nav (c'est pour ça que le hover est sur le nav, s'il était sur le ul le menu ne s'afficherai pas */
+    }
+
+    header a {
+        display: block; /* affichage en block au lieu d'inline pour que les élément se mettent l'un en dessous de l'autre */
+        text-align: center;
+        padding: 0.3em;
+        margin: 0.3em;
+    }
+}
+
+/** PARTIE PRINCIPALE **/
+
+/** page accueil **/
+@media only screen and (min-width: 750px) { /* grands écrans */
+    main {
+        width: 64%;
+        padding: 0 3%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    main h2 {
+        padding-left: 1em; /* marge pour le titre Accueil */
+    }
+}
+
+main p {
+    background-color: #eeeeee;
+    padding: 1em;
+    text-align: justify;
+    text-indent: 2em;
+}
+
+/** page podcasts **/
+#liste-podcasts article {
+    background-color: #eeeeee;
+    margin: 1em;
+    text-align: center;
+    padding: 1em;
+    position: relative;
+}
+
+@keyframes titre-podcast { /* Animation pour le titre de chacun des podcasts, le titre va se déplacer de 0 à 1em en top */
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 1em;
+    }
+}
+
+#liste-podcasts article p {
+    text-indent: 0;
+    padding: 0;
+}
+
+#liste-podcasts article p.infos {
+    background-color: darkred;
+    color: white;
+    padding: 0.3em;
+}
+
+#liste-podcasts article p.infos span.label {
+    display: inline-block;
+    width: 30%;
+}
+
+#liste-podcasts article p.infos a {
+    color: white;
+}
+
+@media only screen and (min-width: 750px) { /* titre du pocast sur le côté que sur grand écran */
+    #liste-podcasts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    #liste-podcasts article h3 {
+        position: absolute;
+        width: 100%;
+        top: 1em;
+        right: 105%;
+        text-align: right;
+        transform: rotate(-90deg);
+        transform-origin: top right;
+
+        animation: titre-podcast 1s; /* animation sur le titre */
+    }
+}
+
+@media only screen and (max-width: 750px) { /* petits écrans */
+    #liste-podcasts article {
+        margin: 0;
+    }
+    #liste-podcasts article:nth-child(2n) {
+        background-color: white;
+    }
+    #liste-podcasts article h3 {
+        margin: 0.3em;
+    }
+    #liste-podcasts article p {
+        background-color: transparent; /* couleur de fond transparente, l'élément prend donc la couleur de son élément parent */
+        margin-bottom: 1.3em;
+    }
+    #liste-podcasts article p.infos {
+        margin: 0.3em 0 0;
+    }
+    #liste-podcasts article img {
+        position: absolute; /* positionnement de l'image en absolu */
+        top: 1rem;
+        left: 1rem;
+        width: 5rem; /* largeur fixe de l'image */
+    }
+    #liste-podcasts article h3, #liste-podcasts article p {
+        text-align: left;
+        padding-left: 6rem; /* rem car on cible un h3 et un p, ces éléments n'ont pas la même taille de caractère du coup em ne convient pas. 6 = 5 pour l'image width + 1 pour le left*/
+    }
+
+}
+/** COLONNE DROITE **/
+aside {
+    background-color: #dddddd;
+}
+@media only screen and (min-width: 750px) {
+    aside {
+        background-image: linear-gradient(#dddddd, white);
+        width: 30%;
+    }
+}
+
+aside form {
+    padding: 1em;
+}
+
+aside label {
+    display: block;
+    background-color: #eeeeee;
+    color: darkred;
+    border-bottom: darkred dotted 1px;
+    padding: 0.3em;
+    margin: 0.3em 0;
+}
+
+aside input, aside textarea {
+    width: 100%;
+}
+
+aside textarea {
+    height: 5em;
+}
+
+aside input[type=submit] {
+    background-color: darkred;
+    color: white;
+    padding: 1em;
+    border: none;
+    cursor: pointer;
+
+    transition: all 0.5s;
+}
+
+aside input[type=submit]:hover {
+    background-color: white;
+    color: darkred;
+
+    transition: all 0.5s;
+}

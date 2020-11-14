@@ -1,0 +1,113 @@
+/**
+ * Plugin Name: Responsive Photo Gallery
+ * Version: 3.4.5
+*/
+.gall-img-responsive{
+	width:100% !important;
+	height:auto !important;
+	display:block !important;
+}
+
+.gal-container{
+	margin-bottom: 60px;
+	padding-top:20px;
+	overflow:auto;
+	display:block;
+}
+.b-wrapper h2{
+
+	color:#ffffff !important;
+	font-size:17px !important;
+	padding-bottom: 5px !important;
+	margin-bottom: 5px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	margin-top: 11% !important;
+	padding-top: 5px!important;
+}
+.b-wrapper p a i{
+	color: #ffffff !important;
+}
+.wl-gallery{
+	margin-bottom:20px;
+	
+}
+
+.rpg-gal-title{
+	font-weight: bolder;
+	 padding-bottom:20px;
+	 border-bottom:2px solid #f2f2f2;
+	 text-align:center ;
+	 margin-bottom: 20px;
+	 font-size:16px;
+}
+.clearfix:before,
+.clearfix:after
+ {
+  display: table;
+  content: " ";
+}
+.clearfix:after,
+.container:after
+ {
+  clear: both;
+}
+i.far.fa-image.fa-2x {
+    margin-top: 2px !important;
+}
+
+.b-from-right a {
+    background: orange;
+    color: #fff!important;
+    font-size: 12px;
+    line-height: 70px;
+    height: 60px;
+    border-radius: 50px;
+    width: 60px;
+    display: inline-block;
+}
+.b-wrapper p a i{
+	color:#fff!important;
+}
+.b-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.widget .b-from-right a {
+     font-size: 8px;
+    line-height: 5px;
+    height: 30px;
+    border-radius: 30px;
+    width: 35px;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.widget .b-wrapper h2 {
+    margin-top: 5% !important;
+}
+
+
+.enigma_sidebar_widget .b-from-right a {
+     font-size: 8px;
+    line-height: 8px;
+    height: 27px;
+    border-radius: 18px;
+    width: 28px;
+    display: inline-block;
+    padding: 6px;
+    /*margin-bottom: 5px;*/
+}
+
+.enigma_sidebar_widget .b-wrapper h2 {
+    margin-top: 5% !important;
+}
+.enigma_sidebar_widget .b-link-fade .b-wrapper{
+    width: 125%;
+ }
+
+.enigma_sidebar_widget .gall-img-responsive {
+    width: 125% !important;
+   }
