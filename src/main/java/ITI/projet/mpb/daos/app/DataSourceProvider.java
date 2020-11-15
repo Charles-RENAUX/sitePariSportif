@@ -26,7 +26,7 @@ public class DataSourceProvider {
     }
 
     public static Properties loadProperties() {
-        try (InputStream input = DataSourceProvider.class.getClassLoader().getResourceAsStream("jdbc-user.properties")) {
+        try (InputStream input = DataSourceProvider.class.getClassLoader().getResourceAsStream("jdbc-app.properties")) {
             if (input == null) {
                 throw new IllegalStateException("Properties file not found.");
             }

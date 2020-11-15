@@ -1,4 +1,4 @@
-package ITI.projet.mpb.daos.home;
+package ITI.projet.mpb.daos.home.impl;
 
 
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class DataSourceProvider {
     }
 
     private static Properties loadProperties() {
-        try (InputStream input = ITI.projet.mpb.daos.app.DataSourceProvider.class.getClassLoader().getResourceAsStream("jdbc-admin.properties")) {
+        try (InputStream input = ITI.projet.mpb.daos.app.DataSourceProvider.class.getClassLoader().getResourceAsStream("jdbc-home.properties")) {
             if (input == null) {
                 throw new IllegalStateException("Properties file not found.");
             }
