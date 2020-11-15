@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="monpetitbet" />
+        <module name="mpb" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mpb" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
