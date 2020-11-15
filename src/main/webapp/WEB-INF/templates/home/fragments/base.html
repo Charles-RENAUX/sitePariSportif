@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:fragment="header(currentPage)">
+
+    <nav id="main nav">
+        <ul id="menu-demo2">
+            <li th:class="${currentPage== 'home' ? 'active' : ''}"><a href="/">Accueil</a> </li>
+            <li><a href="">Sites</a>
+                <ul>
+                    <li><a href="/bookmaker">Betclic</a></li>
+                    <li><a href="/bookmaker">Winamax</a></li>
+                    <li><a href="/bookmaker">Unibet</a></li>
+                </ul>
+            </li>
+            <li><a href="">Débutant</a>
+                <ul>
+                    <li><a href="/beginner?id=1">Les Sports</a></li>
+                    <li><a href="/beginner?id=2">Les paris Sportifs</a></li>
+                    <li><a href="/beginner">Les Bookmakers</a></li>
+                </ul>
+            </li>
+            <li><a href="/contact">Nous Contacter</a> </li>
+            <li><a href="/register">S'Inscrire</a></li>
+            <li><a href="/connect">Se Connecter</a> </li>
+        </ul>
+    </nav>
+</div>
+
+<div th:fragment="aside">
+    <!-- Insérer ici les liens d'affiliations -->
+    <h3>Liens d'affiliation Bookmakers</h3>
+</div>
+
+<div th:fragment="left-aside(Bookmaker)">
+    <!-- Insérer ici le menu de commande du Book-->
+    <h5 th:text="${Bookmaker}">Winamax</h5>
+    <a href="#">P</a>
+</div>
+
+
+
+</html>

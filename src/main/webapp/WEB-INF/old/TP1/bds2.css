@@ -1,0 +1,6 @@
+body {
+    font-family: Arial, Helvetica, Verdana, sans-serif; /* police de la page, le navigateur essaie de les charger dans l'ordre, si pas dispo il prendra une police sans-serif*/
+    margin: 0; /* Suppression des marges par défaut pour que notre page prenne toute la largeur/hauteur*/
+    background-image: linear-gradient(lightgray, #808080); /* Dégradé de gris en fond de page*/
+    padding-top: 4em; /* Décalage du contenu vers le bas car on a déclaré le header en position fixed */
+}
