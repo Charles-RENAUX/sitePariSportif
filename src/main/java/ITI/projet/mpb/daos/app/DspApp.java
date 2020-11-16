@@ -1,4 +1,4 @@
-package ITI.projet.mpb.daos.admin;
+package ITI.projet.mpb.daos.app;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,13 +8,13 @@ import javax.sql.DataSource;
 
 import org.mariadb.jdbc.MariaDbDataSource;
 
-public class DataSourceProvider {
+public class DspApp {
 
     private static MariaDbDataSource dataSource;
 
     public static DataSource getDataSource() throws SQLException {
         if (dataSource == null) {
-            Properties configuration = ITI.projet.mpb.daos.app.DataSourceProvider.loadProperties();
+            Properties configuration = DspApp.loadProperties();
             dataSource = new MariaDbDataSource();
             dataSource.setServerName(configuration.getProperty("server.host"));
             dataSource.setPort(Integer.parseInt(configuration.getProperty("server.port")));
@@ -25,8 +25,8 @@ public class DataSourceProvider {
         return dataSource;
     }
 
-    private static Properties loadProperties() {
-        try (InputStream input = ITI.projet.mpb.daos.app.DataSourceProvider.class.getClassLoader().getResourceAsStream("jdbc-admin.properties")) {
+    public static Properties loadProperties() {
+        try (InputStream input = DspApp.class.getClassLoader().getResourceAsStream("jdbc-app.properties")) {
             if (input == null) {
                 throw new IllegalStateException("Properties file not found.");
             }

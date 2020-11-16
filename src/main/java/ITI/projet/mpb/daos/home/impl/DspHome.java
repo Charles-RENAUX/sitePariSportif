@@ -7,15 +7,16 @@ import java.sql.SQLException;
 import java.util.Properties;
 import javax.sql.DataSource;
 
+import ITI.projet.mpb.daos.app.DspApp;
 import org.mariadb.jdbc.MariaDbDataSource;
 
-public class DataSourceProvider {
+public class DspHome {
 
     private static MariaDbDataSource dataSource;
 
     public static DataSource getDataSource() throws SQLException {
         if (dataSource == null) {
-            Properties configuration = ITI.projet.mpb.daos.app.DataSourceProvider.loadProperties();
+            Properties configuration = DspHome.loadProperties();
             dataSource = new MariaDbDataSource();
             dataSource.setServerName(configuration.getProperty("server.host"));
             dataSource.setPort(Integer.parseInt(configuration.getProperty("server.port")));
@@ -27,7 +28,7 @@ public class DataSourceProvider {
     }
 
     private static Properties loadProperties() {
-        try (InputStream input = ITI.projet.mpb.daos.app.DataSourceProvider.class.getClassLoader().getResourceAsStream("jdbc-home.properties")) {
+        try (InputStream input = DspHome.class.getClassLoader().getResourceAsStream("jdbc-home.properties")) {
             if (input == null) {
                 throw new IllegalStateException("Properties file not found.");
             }

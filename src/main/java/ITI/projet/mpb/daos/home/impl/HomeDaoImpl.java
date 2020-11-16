@@ -9,15 +9,16 @@ import java.sql.SQLException;
 
 
 public class HomeDaoImpl implements HomeDao {
-    public String getBookmakerName(Integer idBook,String typeBook){
+    public String getBookmakerName(String nameBook,String typeBook){
         String res="";
-        String sql="SELECT * FROM bookmakers WHERE "+typeBook+"=true AND id_book=?";
-        try { Connection cnx = DataSourceProvider.getDataSource().getConnection();
+        String sql="SELECT * FROM bookmakers WHERE name=? and type=?";
+        try { Connection cnx = DspHome.getDataSource().getConnection();
                 PreparedStatement stmt=cnx.prepareStatement(sql);
-                stmt.setInt(1,idBook);
+                stmt.setString(1,nameBook);
+                stmt.setString(2,typeBook);
                 ResultSet rs= stmt.executeQuery();
                 if(rs.next()){
-                    res=rs.getString("name");
+                    res=nameBook;
                 }
             }
         catch (SQLException e){
@@ -28,7 +29,7 @@ public class HomeDaoImpl implements HomeDao {
     public String getBeginnerName(Integer idBeginner){
         String res="";
         String sql="SELECT * FROM beginners WHERE id_beginner=?";
-        try { Connection cnx = DataSourceProvider.getDataSource().getConnection();
+        try { Connection cnx = DspHome.getDataSource().getConnection();
             PreparedStatement stmt=cnx.prepareStatement(sql);
             stmt.setInt(1,idBeginner);
             ResultSet rs= stmt.executeQuery();

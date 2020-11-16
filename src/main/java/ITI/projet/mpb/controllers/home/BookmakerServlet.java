@@ -15,19 +15,11 @@ public class BookmakerServlet extends GenericHomeServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Integer idBook=null;
+        String nameBook=req.getParameter("name");
         String type=req.getParameter("type");
         try{
-            idBook=Integer.parseInt(req.getParameter("id"));
-        }catch (NumberFormatException nfe){
-            //redirection servlet 404
-            resp.sendRedirect("/404");
-        }
-
-        //Partie Appel du service
-        try{
             //appeler a partir du service l'article
-            String bookName= HomeService.getInstance().getBookmakerName(idBook,type);
+            String bookName= HomeService.getInstance().getBookmakerName(nameBook,type);
             if ("".equals(bookName)){
                 resp.sendRedirect("/404");
             }else{
@@ -43,5 +35,6 @@ public class BookmakerServlet extends GenericHomeServlet {
             //redirection servlet 404
             resp.sendRedirect("/404");
         }
+
     }
 }

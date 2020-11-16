@@ -17,15 +17,15 @@ public class HomeService {
 
     private HomeDao homeDao= new HomeDaoImpl();
 
-    public String getBookmakerName(Integer idBook,String typeBook){
+    public String getBookmakerName(String nameBook,String typeBook){
 
         if (typeBook==null||"".equals(typeBook)){
-            throw new IllegalArgumentException("You must choose a categorie for the book");
+            throw new IllegalArgumentException("You must choose a catégorie for the book");
         }
-        if (idBook==null){
-            throw new IllegalArgumentException("The id can't be Null");
+        if (nameBook==null||"".equals(nameBook)){
+            throw new IllegalArgumentException("The bookmaker must have a name");
         }
-            return homeDao.getBookmakerName(idBook,typeBook);
+            return homeDao.getBookmakerName(nameBook,typeBook);
         }
 
     public String getBeginnerName(Integer idBeginner){

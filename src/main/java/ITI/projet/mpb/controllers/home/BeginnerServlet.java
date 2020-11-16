@@ -18,22 +18,23 @@ public class BeginnerServlet extends GenericHomeServlet {
         Integer idBeginner=null;
         try{
             idBeginner=Integer.parseInt(req.getParameter("id"));
+            try{
+                String articleName= HomeService.getInstance().getBeginnerName(idBeginner);
+                if ("".equals(articleName)){
+                    resp.sendRedirect("/404");
+                }else {
+                    WebContext context = new WebContext(req, resp, req.getServletContext());
+                    context.setVariable("name", articleName);
+                    TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+                    templateEngine.process("beginner", context, resp.getWriter());
+                }
+            } catch (IllegalArgumentException iae){
+                resp.sendRedirect("/404");
+            }
         }catch (NumberFormatException nfe){
             resp.sendRedirect("/404");
         }
-        try{
-            String articleName= HomeService.getInstance().getBeginnerName(idBeginner);
-            if ("".equals(articleName)){
-                resp.sendRedirect("/404");
-            }else {
-                WebContext context = new WebContext(req, resp, req.getServletContext());
-                context.setVariable("name", articleName);
-                TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-                templateEngine.process("beginner", context, resp.getWriter());
-            }
-        } catch (IllegalArgumentException iae){
-            resp.sendRedirect("/404");
-        }
+
     }
 
 

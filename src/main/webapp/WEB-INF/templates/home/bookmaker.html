@@ -10,7 +10,8 @@
 
 <main>
     <div id="article">
-        <h1>Article Débutant</h1>
+        <h1 th:text="${bookName}">Bookmaker</h1>
+        <p th:text="${type}">Type</p>
     </div>
     <div th:replace="~{fragments/base ::aside}"></div>
 </main>
