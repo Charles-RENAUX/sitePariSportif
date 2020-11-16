@@ -14,28 +14,20 @@ import java.io.IOException;
 public class BeginnerServlet extends GenericHomeServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        Integer idBeginner=null;
-        try{
-            idBeginner=Integer.parseInt(req.getParameter("id"));
-            try{
-                String articleName= HomeService.getInstance().getBeginnerName(idBeginner);
-                if ("".equals(articleName)){
-                    resp.sendRedirect("/404");
-                }else {
-                    WebContext context = new WebContext(req, resp, req.getServletContext());
-                    context.setVariable("name", articleName);
-                    TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-                    templateEngine.process("beginner", context, resp.getWriter());
-                }
-            } catch (IllegalArgumentException iae){
+        String articleName=req.getParameter("name");
+        try {
+            String resName = HomeService.getInstance().getBeginnerName(articleName);
+            if ("".equals(resName)) {
                 resp.sendRedirect("/404");
+            } else {
+                WebContext context = new WebContext(req, resp, req.getServletContext());
+                context.setVariable("name", articleName);
+                TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+                templateEngine.process("beginner", context, resp.getWriter());
             }
-        }catch (NumberFormatException nfe){
+        } catch (IllegalArgumentException iae) {
             resp.sendRedirect("/404");
         }
-
     }
-
 
 }

@@ -16,18 +16,18 @@ public class BookmakerServlet extends GenericHomeServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String nameBook=req.getParameter("name");
-        String type=req.getParameter("type");
+        String typeArticle=req.getParameter("type");
         try{
             //appeler a partir du service l'article
-            String bookName= HomeService.getInstance().getBookmakerName(nameBook,type);
-            if ("".equals(bookName)){
+            String resName= HomeService.getInstance().getBookmakerName(nameBook,typeArticle);
+            if ("".equals(resName)){
                 resp.sendRedirect("/404");
             }else{
                 //Partie Thymeleaf
                 WebContext context = new WebContext(req, resp, req.getServletContext());
                 //On ajoute ici les éléments du context
-                context.setVariable("bookName", bookName);
-                context.setVariable("type", type);
+                context.setVariable("bookName", nameBook);
+                context.setVariable("type", typeArticle);
                 TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
                 templateEngine.process("bookmaker", context, resp.getWriter());
             }

@@ -28,9 +28,9 @@ public class HomeService {
             return homeDao.getBookmakerName(nameBook,typeBook);
         }
 
-    public String getBeginnerName(Integer idBeginner){
-        if (idBeginner==null){throw new IllegalArgumentException("The id can't be null");}
-        return homeDao.getBeginnerName(idBeginner);
+    public String getBeginnerName(String nameBeginner){
+        if (nameBeginner==null||"".equals(nameBeginner)){throw new IllegalArgumentException("The article must have a name");}
+        return homeDao.getBeginnerName(nameBeginner);
     }
 
 }

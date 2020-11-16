@@ -26,12 +26,12 @@ public class HomeDaoImpl implements HomeDao {
         }
         return res;
     }
-    public String getBeginnerName(Integer idBeginner){
+    public String getBeginnerName(String nameBeginner){
         String res="";
-        String sql="SELECT * FROM beginners WHERE id_beginner=?";
+        String sql="SELECT * FROM beginners WHERE name=?";
         try { Connection cnx = DspHome.getDataSource().getConnection();
             PreparedStatement stmt=cnx.prepareStatement(sql);
-            stmt.setInt(1,idBeginner);
+            stmt.setString(1,nameBeginner);
             ResultSet rs= stmt.executeQuery();
             if(rs.next()){
                 res=rs.getString("name");

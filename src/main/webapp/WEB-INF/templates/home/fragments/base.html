@@ -9,16 +9,16 @@
             <li th:class="${currentPage== 'home' ? 'active' : ''}"><a href="/">Accueil</a> </li>
             <li><a href="">Sites</a>
                 <ul>
-                    <li><a href="/bookmaker">Betclic</a></li>
-                    <li><a href="/bookmaker">Winamax</a></li>
-                    <li><a href="/bookmaker">Unibet</a></li>
+                    <li><a href="/bookmaker?name=betclic&type=bonus">Betclic</a></li>
+                    <li><a href="/bookmaker?name=winamax&type=bonus">Winamax</a></li>
+                    <li><a href="/bookmaker?name=unibet&type=bonus">Unibet</a></li>
                 </ul>
             </li>
             <li><a href="">Débutant</a>
                 <ul>
-                    <li><a href="/beginner?id=1">Les Sports</a></li>
-                    <li><a href="/beginner?id=2">Les paris Sportifs</a></li>
-                    <li><a href="/beginner">Les Bookmakers</a></li>
+                    <li><a href="/beginner?name=sports">Les Sports</a></li>
+                    <li><a href="/beginner?name=paris-sportifs">Les paris Sportifs</a></li>
+                    <li><a href="/beginner?name=bookmakers">Les Bookmakers</a></li>
                 </ul>
             </li>
             <li><a href="/contact">Nous Contacter</a> </li>
