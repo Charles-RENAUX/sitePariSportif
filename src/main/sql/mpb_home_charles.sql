@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Nov 16, 2020 at 11:47 AM
+-- Generation Time: Nov 15, 2020 at 01:53 PM
 -- Server version: 10.5.7-MariaDB-1:10.5.7+maria~focal
 -- PHP Version: 7.4.11
 
@@ -24,26 +24,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `beginners`
+-- Table structure for table `article`
 --
 
-CREATE TABLE `beginners` (
-  `id_beginner` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bookmakers`
---
-
-CREATE TABLE `bookmakers` (
-  `id_book` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `pres` tinyint(1) NOT NULL,
-  `bonus` tinyint(1) NOT NULL,
-  `parrain` tinyint(1) NOT NULL
+CREATE TABLE `article` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(20) NOT NULL,
+  `contenu` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -51,10 +38,20 @@ CREATE TABLE `bookmakers` (
 --
 
 --
--- Indexes for table `beginners`
+-- Indexes for table `article`
 --
-ALTER TABLE `beginners`
-  ADD PRIMARY KEY (`id_beginner`);
+ALTER TABLE `article`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `article`
+--
+ALTER TABLE `article`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
