@@ -18,6 +18,7 @@ public class ConnexionServlet extends GenericAppServlet {
         templateEngine.process("connect", context, resp.getWriter());
     }
 
+    
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //implemeter le tratiement du formulaire de contact
     }
