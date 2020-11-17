@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookmaker - MPB</title>
+</head>
+<body>
+
+<header th:replace="~{fragments/base ::header('bookmaker')}"></header>
+
+<main>
+    <div id="article">
+        <h1 th:text="${bookName}">Bookmaker</h1>
+        <p th:text="${type}">Type</p>
+    </div>
+    <div th:replace="~{fragments/base ::aside}"></div>
+</main>
+
+
+
+</body>
+</html>

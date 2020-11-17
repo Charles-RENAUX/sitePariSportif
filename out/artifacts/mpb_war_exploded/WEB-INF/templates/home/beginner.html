@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Débutant - MPB</title>
+</head>
+<body>
+
+<header th:replace="~{fragments/base ::header('beginner')}"></header>
+
+<main>
+    <div id="article">
+        <h1>Article Name</h1>
+        <p th:text="${name}">Name</p>
+    </div>
+    <div th:replace="~{fragments/base ::aside}"></div>
+</main>
+
+
+
+</body>
+</html>
