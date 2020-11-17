@@ -1,4 +1,7 @@
-div#article
-{
-	background-color: grey;
+header {
+  padding: 100px 0 100px;
+}
+
+section {
+  padding: 150px 0;
 }
