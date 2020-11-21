@@ -34,15 +34,17 @@ public class RegisterServlet extends GenericAppServlet {
     	{
     		try {
     			Client newClient = new Client(Nom,Prenom,Mail,Pseudo,Mdp);
-    			Client creatClient = ClientService.getInstance().addClient(newClient);
-    			// si creation ok on affiche le film qui vient d'etre cree
-    			resp.sendRedirect(String.format("client?id=%d", creatClient.getId()));
+    			ClientService.getInstance().addClient(newClient);
+    			Client finishClient = ClientService.getInstance().getClient(Pseudo);
+    			// si creation ok on affiche le Client qui vient d'etre cree
+    			resp.sendRedirect(String.format("client?id=%d", finishClient.getId()));
     		} catch(IllegalArgumentException iae) {
     			// Si erreur on ajoute le message d'erreur dans la session et on redirige sur la page de creation
     			req.getSession().setAttribute("errorMessage", iae.getMessage());
     			resp.sendRedirect("newfilm");
     		}
     	}
+    	// verification du pseudo deja pris +erreurs 
     	
     }
 

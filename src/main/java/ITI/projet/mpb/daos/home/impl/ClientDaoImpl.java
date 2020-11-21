@@ -122,7 +122,7 @@ public class ClientDaoImpl implements ClientDao
 
 	@Override
 	public String getRole(int id) {
-		Client client=null;
+		Client client = null;
 		String sql="SELECT role FROM roles JOIN ClientsRoles ON roles.id=ClientsRoles.id_Role WHERE ClientsRoles.id_Client=?";
 		try {
 			DataSource dataSource = DataSourceProvider.getDataSource();

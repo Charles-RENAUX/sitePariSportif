@@ -25,10 +25,10 @@ public class AdminFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		// Mise en place de getRole et de la session
+		// Mise en place de getRole 
 		
 		//Client roleClient = ClientService.getInstance().getRole();
-		//request.setAttribute("randomfilm", roleClient);
+		//request.setAttribute("Role", roleClient);
 		
 		chain.doFilter(request, response);
 		
