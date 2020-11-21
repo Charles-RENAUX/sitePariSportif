@@ -20,6 +20,12 @@ public class RegisterServlet extends GenericAppServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //implementer le traitement du formulaire de contact
+    	String Prenom = req.getParameter("prenom");
+    	String Nom = req.getParameter("nom");
+    	String Mail = req.getParameter("email");
+    	String Pseudo = req.getParameter("pseudo");
+    	String Mdp = req.getParameter("mdp");
+    	boolean Confirmation = req.getParameter("mdp2")==req.getParameter("mdp");
     }
 
 
