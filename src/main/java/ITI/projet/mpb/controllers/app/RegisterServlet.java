@@ -5,6 +5,7 @@ import org.thymeleaf.context.WebContext;
 
 import ITI.projet.mpb.entitie.Client;
 import ITI.projet.mpb.services.ClientService;
+import ITI.projet.mpb.services.MotDePasseServiceHash;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +28,8 @@ public class RegisterServlet extends GenericAppServlet {
     	String Nom = req.getParameter("nom");
     	String Mail = req.getParameter("email");
     	String Pseudo = req.getParameter("pseudo");
-    	String Mdp = req.getParameter("mdp");
-    	boolean Confirmation = req.getParameter("mdp2")==req.getParameter("mdp");
+    	String Mdp = MotDePasseServiceHash.genererMotDePasse(req.getParameter("mdp"));
+    	boolean Confirmation = MotDePasseServiceHash.genererMotDePasse(req.getParameter("mdp"))==MotDePasseServiceHash.genererMotDePasse(req.getParameter("mdp2"));
     	
     	if (Confirmation==true)
     	{
@@ -41,7 +42,7 @@ public class RegisterServlet extends GenericAppServlet {
     		} catch(IllegalArgumentException iae) {
     			// Si erreur on ajoute le message d'erreur dans la session et on redirige sur la page de creation
     			req.getSession().setAttribute("errorMessage", iae.getMessage());
-    			resp.sendRedirect("newfilm");
+    			resp.sendRedirect("newClient");
     		}
     	}
     	// verification du pseudo deja pris +erreurs 

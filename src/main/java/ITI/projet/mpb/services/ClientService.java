@@ -38,6 +38,7 @@ public class ClientService
 	}
 	
 	// Service pour une récupération de compte si pseudo/mdp oublié
+	// verification du format 
 	public Client getClientViaCourriel(String courriel)
 	{
 		return clientDao.getClientViaCourriel(courriel);
