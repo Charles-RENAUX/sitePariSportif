@@ -3,5 +3,103 @@
 
 <!-- Ici on met les articles des bookmakers -->
 
+<div th:fragment="betclic">
+<h1>Hello Betclic</h1>
+</div>
+
+<div th:fragment="winamax">
+
+    <section class="py-5">
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#Privacy-Policy" data-toggle="tab"><h4>Présentation</h4></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Activer_mon_bonus" data-toggle="tab"><h4>Bonus</h4></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Reglements" data-toggle="tab"><h4>Parrainage</h4></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content mt-3">
+
+                        <div class="tab-pane active" id="Privacy-Policy" role="tabpanel">
+                            <p class="card-text">
+                            <div class="card cardtag">
+                            <div th:replace="~{fragments/pres :: winamax}" class="card-body">
+                        </div>
+                        </div>
+                </p>
+                        </div>
+
+                        <div class="tab-pane" id="Activer_mon_bonus" role="tabpanel">
+                            <p class="card-text">
+                            </p><div class="card">
+                            <div th:replace="~{fragments/bonus :: winamax}" class="card-body">
+
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="tab-pane" id="Reglements" role="tabpanel">
+                            <p class="card-text">
+                            </p><div class="card">
+                            <div th:replace="~{fragments/parrain :: winamax}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+    </section>
+    <br>
+
+</div>
+
+<div th:fragment="unibet">
+    <h1>Hello Unibet</h1>
+</div>
+
+<div th:fragment="parions-sport">
+    <h1>Hello Parions Sport</h1>
+</div>
+
+<div th:fragment="bwin">
+    <h1>Hello Bwin</h1>
+</div>
+
+<div th:fragment="zebet">
+    <h1>Hello Zebet</h1>
+</div>
+
+<div th:fragment="pmu">
+    <h1>Hello Pmu</h1>
+</div>
+
+<div th:fragment="pokerstars">
+    <h1>Hello PokersStars</h1>
+</div>
+
+<div th:fragment="france-pari">
+    <h1>Hello France-Pari</h1>
+</div>
+
+<div th:fragment="vbet">
+    <h1>Hello Vbet</h1>
+</div>
+
+<div th:fragment="netbet">
+    <h1>Hello Netbet</h1>
+</div>
+
+<div th:fragment="genybet">
+    <h1>Hello Genybet</h1>
+</div>
+
+
+
+
+
 
 </html>

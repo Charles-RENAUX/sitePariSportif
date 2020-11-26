@@ -6,16 +6,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/home.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-<header th:replace="~{fragments/base ::header('home')}"></header>
+<nav th:insert="~{fragments/base ::menu}" class="navbar navbar-inverse navbar-expand-md"></nav>
+
+<header th:insert="~{fragments/base ::headerindex}" class="bg-primary text-white headerindex">
+</header>
 
 <main>
-    <div id="article">
-        <h1>Bienvenue sur la page d'accueil</h1>
+    <div class="container">
+        <h3>Right Aligned Navbar</h3>
+        <p>The .navbar-right class is used to right-align navigation bar buttons.</p>
     </div>
-    <div th:replace="~{fragments/base ::aside}"></div>
 </main>
 
 

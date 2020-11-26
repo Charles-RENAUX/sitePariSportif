@@ -6,19 +6,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/home.css" rel="stylesheet">
 </head>
 <body>
 
-<header th:replace="~{fragments/base ::header('home')}"></header>
+<nav th:insert="~{fragments/base ::menu}" class="navbar navbar-inverse navbar-expand-md"></nav>
+
+<header th:insert="~{fragments/base ::headerindex}" class="bg-primary text-white headerindex">
+</header>
 
 <main>
-    <div id="article">
-        <h1>Bienvenue sur la page d'accueil</h1>
+    <h1 class="container">
+        <div class="row">
+            <div class="col-sm-8 index">
+                <p>Vous êtes plus que nouveaux dans le monde du pari et le terme bookmaker ou les spécificités du pari sportif ne vous parlent pas ?</p>
+                <p>Allez voir notre rubrique « Qu&lsquo;est-ce qu&lsquo;un pari » ou « Qu&lsquo;est-ce qu&lsquo;un bookmaker » si vous voulez en apprendre plus.</p>
+                <p>MonPetitBet est avant tout un site de conseil dans le pari sportif, le but est d&lsquo;aider les personnes qui n&lsquo;ont jamais parié et qui ne se sont jamais inscrite sur les sites de paris sportifs à utiliser leur bonus de bienvenue à bon escient.</p>
+                <p>En plus du bonus de bienvenue, MonPetitBet vous aides aussi à profiter des offres parrainage que tous les bookmakers proposent, à des modalités différentes (vous trouverez les informations concernant ces deux bonus dans les rubriques « Offre de bienvenue » et « Offre de parrainage » où tout vous est expliqué en détail en fonction de chaque bookmaker).</p>
+                <p>Winamax, Betclic, GenyBet, Parions Sport, France-Pari, lequel choisir ? </p>
+                <p>MonPetitBet vous propose une explication approfondie de chaque bookmaker afin de vous aider à choisir celui qui vous iras le mieux pour vos premiers pas dans le monde du pari </p>
+                <p></p>
+            </div>
+            <div th:insert="~{fragments/base ::aside}" class="col-sm-4">
+            </div>
+
     </div>
-    <div th:replace="~{fragments/base ::aside}"></div>
 </main>
 
-
+<footer th:insert="~{fragments/base ::footer}" class="footer footer-black footer-big">
+</footer>
 
 
 </body>

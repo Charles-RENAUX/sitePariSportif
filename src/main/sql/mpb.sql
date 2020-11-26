@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : db
--- Généré le : mar. 17 nov. 2020 à 15:13
--- Version du serveur :  10.5.7-MariaDB-1:10.5.7+maria~focal
--- Version de PHP : 7.4.11
+-- Host: db
+-- Generation Time: Nov 18, 2020 at 10:02 AM
+-- Server version: 10.5.7-MariaDB-1:10.5.7+maria~focal
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `mpb`
+-- Database: `mpb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `affiliation`
+-- Table structure for table `affiliation`
 --
 
 CREATE TABLE `affiliation` (
@@ -36,7 +36,7 @@ CREATE TABLE `affiliation` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `beginners`
+-- Table structure for table `beginners`
 --
 
 CREATE TABLE `beginners` (
@@ -45,45 +45,49 @@ CREATE TABLE `beginners` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `beginners`
+-- Dumping data for table `beginners`
 --
 
 INSERT INTO `beginners` (`id_beginner`, `name`) VALUES
 (1, 'sports'),
 (2, 'paris-sportifs'),
-(3, 'bookmakers');
+(3, 'bookmakers'),
+(150, 'test');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `bookmakers`
+-- Table structure for table `bookmakers`
 --
 
 CREATE TABLE `bookmakers` (
-  `id_book` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `type` varchar(20) NOT NULL
+  `id_bookmaker` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `bookmakers`
+-- Dumping data for table `bookmakers`
 --
 
-INSERT INTO `bookmakers` (`id_book`, `name`, `type`) VALUES
-(1, 'winamax', 'bonus'),
-(1, 'winamax', 'parrain'),
-(1, 'winamax', 'avis'),
-(2, 'betclic', 'bonus'),
-(2, 'betclic', 'parrain'),
-(2, 'betclic', 'avis'),
-(3, 'unibet', 'bonus'),
-(3, 'unibet', 'parrain'),
-(3, 'unibet', 'avis');
+INSERT INTO `bookmakers` (`id_bookmaker`, `name`) VALUES
+(1, 'betclic'),
+(2, 'winamax'),
+(3, 'unibet'),
+(4, 'parions-sport'),
+(5, 'bwin'),
+(6, 'zebet'),
+(7, 'pmu'),
+(8, 'pokerstars'),
+(9, 'france-paris'),
+(10, 'vbet'),
+(11, 'netbet'),
+(12, 'genybet'),
+(150, 'test');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `clients`
+-- Table structure for table `clients`
 --
 
 CREATE TABLE `clients` (
@@ -99,7 +103,7 @@ CREATE TABLE `clients` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `clientSiteParrain`
+-- Table structure for table `clientSiteParrain`
 --
 
 CREATE TABLE `clientSiteParrain` (
@@ -111,7 +115,7 @@ CREATE TABLE `clientSiteParrain` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ClientsRoles`
+-- Table structure for table `ClientsRoles`
 --
 
 CREATE TABLE `ClientsRoles` (
@@ -122,7 +126,7 @@ CREATE TABLE `ClientsRoles` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `historique`
+-- Table structure for table `historique`
 --
 
 CREATE TABLE `historique` (
@@ -136,7 +140,7 @@ CREATE TABLE `historique` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `info_payement`
+-- Table structure for table `info_payement`
 --
 
 CREATE TABLE `info_payement` (
@@ -150,7 +154,7 @@ CREATE TABLE `info_payement` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -161,7 +165,7 @@ CREATE TABLE `roles` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `site_synthese`
+-- Table structure for table `site_synthese`
 --
 
 CREATE TABLE `site_synthese` (
@@ -171,90 +175,96 @@ CREATE TABLE `site_synthese` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `affiliation`
+-- Indexes for table `affiliation`
 --
 ALTER TABLE `affiliation`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `beginners`
+-- Indexes for table `beginners`
 --
 ALTER TABLE `beginners`
   ADD PRIMARY KEY (`id_beginner`);
 
 --
--- Index pour la table `clients`
+-- Indexes for table `bookmakers`
+--
+ALTER TABLE `bookmakers`
+  ADD PRIMARY KEY (`id_bookmaker`);
+
+--
+-- Indexes for table `clients`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `clientSiteParrain`
+-- Indexes for table `clientSiteParrain`
 --
 ALTER TABLE `clientSiteParrain`
   ADD PRIMARY KEY (`id_Client`),
   ADD KEY `liaison_Ps` (`id_Site`);
 
 --
--- Index pour la table `ClientsRoles`
+-- Indexes for table `ClientsRoles`
 --
 ALTER TABLE `ClientsRoles`
   ADD PRIMARY KEY (`id_Client`),
   ADD KEY `liaison_role` (`id_Role`);
 
 --
--- Index pour la table `historique`
+-- Indexes for table `historique`
 --
 ALTER TABLE `historique`
   ADD PRIMARY KEY (`id`,`id_Client`),
   ADD KEY `liaison_utilisateur` (`id_Client`);
 
 --
--- Index pour la table `info_payement`
+-- Indexes for table `info_payement`
 --
 ALTER TABLE `info_payement`
   ADD PRIMARY KEY (`id_Client`);
 
 --
--- Index pour la table `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `site_synthese`
+-- Indexes for table `site_synthese`
 --
 ALTER TABLE `site_synthese`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `clients`
+-- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `historique`
+-- AUTO_INCREMENT for table `historique`
 --
 ALTER TABLE `historique`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `site_synthese`
+-- AUTO_INCREMENT for table `site_synthese`
 --
 ALTER TABLE `site_synthese`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

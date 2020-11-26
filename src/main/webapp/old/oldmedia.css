@@ -1,0 +1,75 @@
+@media (min-width: 768px)
+.footcontainer {
+    max-width: 720px;
+}
+@media (min-width: 576px)
+.footcontainer {
+    max-width: 540px;
+}
+
+@media (max-width: 480px){
+footer.footer {
+    background: #fff;
+    font-size:10px;
+}}
+@media (min-width: 480px){
+footer.footer {
+    background: #fff;
+    font-size:20px;
+}}
+
+footer.footer.footer-black {
+    background: #323437;
+}
+
+.footer-big {
+    color: #999;
+    padding: 60px 0 50px;
+    text-align: center;
+}
+
+@media (min-width: 768px)
+.container-md, .container-sm, .container {
+    max-width: 768px;
+}
+@media (min-width: 576px)
+.footcontainer-sm, .footcontainer {
+    max-width: 576px;
+}
+@media (min-width: 768px)
+.container {
+    max-width: 768px;
+}
+@media (min-width: 576px)
+.footcontainer {
+    max-width: 576px;
+}
+
+@media (min-width: 768px).t-md, .t-sm, .t {
+
+font-size:1px;
+}
+
+@media (min-width: 100px){
+t-sm{
+font-size:20px;
+}
+
+@media (min-width: 768px)
+t{
+font-size:1px;
+}
+
+@media (min-width: 1000px){
+t{
+font-size:20px;
+}
+
+
+.footer t{
+	font-size:170%;
+}
+
+  <div class="container">
+
+       <div class="copyright pull-right"><t> © MonPetitBet 2020</t></div>

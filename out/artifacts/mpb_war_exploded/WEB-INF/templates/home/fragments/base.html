@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 
+ <nav th:fragment="menu">
+        <div class="container" id="container-main">
 
-<div th:fragment="header(currentPage)">
-    <nav class="navbar navbar-inverse navbar-expand-md">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">MonPetitBet</a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mpbNavBar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
+            <div class="navbar-header">
+                <img class="logo"
+                     src="img/logo.jpg">
+                <a class="navbar-brand" href="/index">
+                    monPetitBet</a>
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mpbNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </div>
         <div class="collapse navbar-collapse" id="mpbNavBar">
             <ul class="nav navbar-nav text-center">
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bookmakers <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="bookmaker?name=betclic&type=bonus">Betclic</a></li>
-                        <li><a href="bookmaker?name=winamax&type=bonus">Winamax</a></li>
-                        <li><a href="bookmaker?name=unibet&type=bonus">Unibet</a></li>
+                        <li><a href="/bookmaker?name=betclic">Betclic</a></li>
+                        <li><a href="/bookmaker?name=winamax">Winamax</a></li>
+                        <li><a href="/bookmaker?name=unibet">Unibet</a></li>
+                        <li><a href="/bookmaker?name=parions-sport">Parions Sport</a></li>
+                        <li><a href="/bookmaker?name=bwin">Bwin</a></li>
+                        <li><a href="/bookmaker?name=zebet">Zebet</a></li>
+                        <li><a href="/bookmaker?name=pmu">PMU</a></li>
+                        <li><a href="/bookmaker?name=pokerstars">PokerStars</a></li>
+                        <li><a href="/bookmaker?name=france-paris">France-Paris</a></li>
+                        <li><a href="/bookmaker?name=vbet">Vbet</a></li>
+                        <li><a href="/bookmaker?name=netbet">Netbet</a></li>
+                        <li><a href="/bookmaker?name=genybet">Genybet</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Débutant <span class="caret"></span></a>
@@ -37,36 +48,19 @@
     </nav>
 </div>
 
+    <header th:fragment="headerindex" >
+        <div class="container text-center">
+            <h1>Bienvenue sur monPetitBet</h1>
+            <p class="lead">La crème du Betting</p>
+        </div>
+    </header>
 
 
 
-<div th:fragment="headerOLD(currentPage)">
 
-    <nav id="main nav">
-        <ul id="menu-demo2">
-            <li th:class="${currentPage== 'home' ? 'active' : ''}"><a href="/">Accueil</a> </li>
-            <li><a href="">Sites</a>
-                <ul>
-                    <li><a href="/bookmaker?name=betclic&type=bonus">Betclic</a></li>
-                    <li><a href="/bookmaker?name=winamax&type=bonus">Winamax</a></li>
-                    <li><a href="/bookmaker?name=unibet&type=bonus">Unibet</a></li>
-                </ul>
-            </li>
-            <li><a href="">Débutant</a>
-                <ul>
-                    <li><a href="/beginner?name=sports">Les Sports</a></li>
-                    <li><a href="/beginner?name=paris-sportifs">Les paris Sportifs</a></li>
-                    <li><a href="/beginner?name=bookmakers">Les Bookmakers</a></li>
-                </ul>
-            </li>
-            <li><a href="mailto:contact@monpetitbet.fr">Nous Contacter</a> </li>
-            <li><a href="register">S'Inscrire</a></li>
-            <li><a href="connect">Se Connecter</a> </li>
-        </ul>
-    </nav>
-</div>
 
-<div th:fragment="aside">
+
+ <div th:fragment="aside">
     <!-- Insérer ici les liens d'affiliations -->
     <h3>Liens d'affiliation Bookmakers</h3>
 </div>
