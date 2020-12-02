@@ -84,6 +84,9 @@ public class ClientService {
 		if (client.getEmail() == null) {
 			throw new IllegalArgumentException(" 'email' can not be null.");
 		}
+		if(checkMail(client.getEmail())==false) {
+			throw new IllegalArgumentException("'email' must be in the right format");
+		}
 		if (client.getMotDePasse() == null) {
 			throw new IllegalArgumentException(" 'mot de passe' can not be null.");
 		}
