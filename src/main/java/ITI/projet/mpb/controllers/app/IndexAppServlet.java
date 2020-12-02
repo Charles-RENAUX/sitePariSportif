@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/app/")
-public class IndexAppServlet extends GenericAppServlet{
+public class IndexAppServlet extends GenericAppServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebContext context = new WebContext(req, resp, req.getServletContext());
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-        templateEngine.process("index", context, resp.getWriter());
+        if (req.getSession().getAttribute("admin") == null) {
+            WebContext context = new WebContext(req, resp, req.getServletContext());
+            TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+            templateEngine.process("index", context, resp.getWriter());
+        }else{
+            resp.sendRedirect("/admin/");
     }
-}
+}}

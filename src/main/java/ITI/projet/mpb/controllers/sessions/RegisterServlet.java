@@ -1,6 +1,7 @@
 package ITI.projet.mpb.controllers.sessions;
 
 import ITI.projet.mpb.controllers.app.GenericAppServlet;
+import ITI.projet.mpb.exceptions.ClientAlreadyException;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -38,13 +39,19 @@ public class RegisterServlet extends GenericAppServlet {
     			Client newClient = new Client(Nom,Prenom,Mail,Pseudo,Mdp,1);
     			ClientService.getInstance().addClient(newClient);
     			Client finishClient = ClientService.getInstance().getClientViaPseudo(Pseudo);
-    			// si creation ok on affiche le Client qui vient d'etre cree
-    			resp.sendRedirect(String.format("client?id=%d", finishClient.getId()));
+    			// si creation on redirige vers la connexion avec un msg succes
+    			req.getSession().setAttribute("succesMsg","Inscription Réussie. Merci de vous connecter");
+				resp.sendRedirect("/connect");
     		} catch(IllegalArgumentException iae) {
     			// Si erreur on ajoute le message d'erreur dans la session et on redirige sur la page de creation
-    			req.getSession().setAttribute("errorMessage", iae.getMessage());
-    			resp.sendRedirect("newClient");
-    		}
+    			req.getSession().setAttribute("errorMsg", iae.getMessage());
+    			resp.sendRedirect("/register");
+    		}catch (ClientAlreadyException cae){
+    			//Si un client possede deja un attribut fournit dans le formulaire de connexion
+				req.getSession().setAttribute("errorMsg", cae.getMessage());
+				resp.sendRedirect("/register");
+
+		}
     	}
     	// verification du pseudo deja pris +erreurs 
     	

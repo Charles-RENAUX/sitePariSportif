@@ -20,10 +20,12 @@ import java.io.IOException;
 public class ConnexionServlet extends GenericAppServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebContext context = new WebContext(req, resp, req.getServletContext());
-        TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-        templateEngine.process("connect", context, resp.getWriter());
-        
+        if(req.getSession().getAttribute("user")==null) {
+            WebContext context = new WebContext(req, resp, req.getServletContext());
+            TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+            templateEngine.process("connect", context, resp.getWriter());
+        }else{
+            resp.sendRedirect("/app/");}
     }
 
     
@@ -44,10 +46,10 @@ public class ConnexionServlet extends GenericAppServlet {
                 }
 
             }else{
-                resp.sendRedirect("/papa1");
+                resp.sendRedirect("/connect");
             }
     	} catch (Exception e){
-                resp.sendRedirect("/papa2");
+                resp.sendRedirect("/connect");
             }
     	
     }
