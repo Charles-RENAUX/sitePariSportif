@@ -1,7 +1,7 @@
 package ITI.projet.mpb.services;
 
-import ITI.projet.mpb.daos.home.HomeDao;
-import ITI.projet.mpb.daos.home.impl.HomeDaoImpl;
+import ITI.projet.mpb.daos.HomeDao;
+import ITI.projet.mpb.daos.impl.HomeDaoImpl;
 
 import java.util.List;
 

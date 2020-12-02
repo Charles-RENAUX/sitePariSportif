@@ -1,4 +1,4 @@
-package ITI.projet.mpb.controller.admin;
+package ITI.projet.mpb.controllers.admin;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+    <title>Administration</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/appAdmin.css" />
+
+    <script src="../js/appAdmin.js" type="application/javascript"></script>
+</head>
+
+
+<body>
+<header>
+	<ul>
+		Menu
+		<div id="menu-display">
+			<h4>Gestion des Clients</h4>
+			<h4>Gestion Paris</h4>
+			<h4>Vu Client</h4>
+		</div>
+	</ul>
+	<h1>Administration</h1>
+</header>
+
+
+
+<div id="container">
+    <h1 class="display-1">Liste Clients</h1>
+    <section id="list">
+        <table class="table table-striped table-hover" id="clients-list">
+            <caption>Clients list</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Mot de passe</th>
+                    <th scope="col">Solde</th>
+                    <th scope="col">Role</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <section id="form">
+        <h2>Detail of the Client</h2>
+        <form>
+            <div class="form-group">
+                <label for="code-input">Id</label>
+                <input type="text" class="form-control w-25" id="id">
+            </div>
+            <div class="form-group">
+                <label for="nom-input"> Nom </label>
+                <input type="form-control" class="form-control w-25" id="nom-input">
+            </div>
+            <div class="form-group">
+                <label for="prenom-input">Prénom</label>
+                <input type="text" class="form-control" id="prenom-input">
+            </div>
+            <div class="form-group">
+                <label for="email-input"> Email </label>
+                <input type="text" class="form-control" id="email-input">
+            </div>
+            <div class="form-group">
+                <label for="pseudo-input"> Pseudo </label>
+                <input type="text" class="form-control" id="pseudo-input">
+            </div>
+            <div class="form-group">
+                <label for="solde-input"> Solde </label>
+                <input type="text" class="form-control w-25" id="solde-input">
+            </div>
+            <div class="form-group">
+                <label for="role-input">Role</label>
+                <select class="text" id="role-input"></select>
+            </div>
+            <button type="button" class="btn btn-secondary" id="go-back">Go back to the list</button>
+            <button type="submit" class="btn btn-primary" id="save-form">Save</button>
+        </form>
+    </section>
+</div>
+
+</body>
+</html>

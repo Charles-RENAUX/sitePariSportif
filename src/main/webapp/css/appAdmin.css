@@ -1,0 +1,71 @@
+body
+{
+	margin:0;
+	background-color: blue;
+}
+
+header
+{
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	background-color: red;
+	z-index: 0;
+}
+
+header h1
+{
+	background-color: green;
+	width: 25%;
+	position: relative;
+	left: 75%;
+}
+
+header ul
+{
+	background-color: yellow;
+	position: absolute;
+	width: 25%;
+	height: 100%;
+}
+
+header ul:hover div#menu-display
+{
+	display: block;
+	background-color: grey;
+	height: 200%;
+	z-index: 1;
+	position: absolute;
+	top: 4em;
+	left:0em;
+
+}
+
+div#menu-display
+{
+	display:none;
+}
+
+div#container
+{
+	background-color: purple;
+	margin: 10em 3em 3em 3em;
+}
+
+div#container
+{
+	text-align: center;
+}
+
+section#list
+{
+	position: relative;
+	background-color: orange;
+	width:50%;
+	left:25%;
+}
+
+section#form
+{
+	display: none;
+}

@@ -1,11 +1,10 @@
 package ITI.projet.mpb;
 
 import ITI.projet.mpb.daos.DataSourceProvider;
-import ITI.projet.mpb.daos.home.HomeDao;
-import ITI.projet.mpb.daos.home.impl.HomeDaoImpl;
+import ITI.projet.mpb.daos.HomeDao;
+import ITI.projet.mpb.daos.impl.HomeDaoImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert.*;
 
 import java.sql.Connection;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -22,7 +21,7 @@ public class HomeDaoTestCase {
     public void initDb() throws Exception{
         try (Connection connection = DataSourceProvider.getDataSource().getConnection();
              Statement stmt = connection.createStatement()) {
-            stmt.executeUpdate("INSERT INTO `beginners` (`id_beginner`,`name`,`tym`,`image`) VALUES (0,'test','test',0)");
+            stmt.executeUpdate("INSERT INTO `beginners` (`id_beginner`,`name`,`tym`,`image`,`title`) VALUES (0,'test','test',0,'test')");
             stmt.executeUpdate("INSERT INTO `bookmakers` (`id_bookmaker`,`name`) VALUES (0,'test')");
         }catch (SQLIntegrityConstraintViolationException e1){}
     }
@@ -42,8 +41,9 @@ public class HomeDaoTestCase {
         //WHEN
         List<String> resMap=homeDao.getBeginnerName("test");
         //THEN
-        assertThat(resMap.get(0)).isEqualTo("0");
-        assertThat(resMap.get(1)).isEqualTo("test");
+        assertThat(resMap.get(1)).isEqualTo("0");
+        assertThat(resMap.get(0)).isEqualTo("test");
+        assertThat(resMap.get(2)).isEqualTo("test");
     }
 
 
