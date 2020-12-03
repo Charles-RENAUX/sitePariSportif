@@ -16,14 +16,21 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet("/connect")
+@WebServlet("/login")
 public class ConnexionServlet extends GenericAppServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(req.getSession().getAttribute("user")==null) {
             WebContext context = new WebContext(req, resp, req.getServletContext());
+            if (req.getSession().getAttribute("errorMsg")!=null){
+                context.setVariable("errorMsg", req.getSession().getAttribute("errorMsg"));
+                req.getSession().setAttribute("errorMsg", null);
+            }else if (req.getSession().getAttribute("succesMsg")!=null) {
+                context.setVariable("succesMsg", req.getSession().getAttribute("succesMsg"));
+                req.getSession().setAttribute("succesMsg", null);
+            }
             TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-            templateEngine.process("connect", context, resp.getWriter());
+            templateEngine.process("login", context, resp.getWriter());
         }else{
             resp.sendRedirect("/app/");}
     }
@@ -46,11 +53,16 @@ public class ConnexionServlet extends GenericAppServlet {
                 }
 
             }else{
-                resp.sendRedirect("/connect");
+                req.getSession().setAttribute("errorMsg", "Pseudo et/ou mot de passe incorrect");
+                resp.sendRedirect("/login");
             }
-    	} catch (Exception e){
-                resp.sendRedirect("/connect");
-            }
+    	} catch (IllegalArgumentException iae){
+                req.getSession().setAttribute("errorMsg", iae.getMessage());
+                resp.sendRedirect("/login");
+            }catch (Exception e){
+                 req.getSession().setAttribute("errorMsg", "Pseudo et/ou mot de passe incorrect");
+                 resp.sendRedirect("/login");
+        }
     	
     }
 }

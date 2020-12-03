@@ -24,7 +24,7 @@ public class AppFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
 
         if (request.getSession().getAttribute("user")==null){
-            response.sendRedirect("/connect");
+            response.sendRedirect("/login");
         }else{
             chain.doFilter(request,response);
         }

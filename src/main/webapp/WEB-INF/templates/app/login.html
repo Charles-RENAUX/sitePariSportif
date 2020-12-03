@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Connect - MPB</title>
-    <link href="css/connexion.css" rel="stylesheet" type="text/css">
+    <link href="css/login.css" rel="stylesheet" type="text/css">
 </head>
 
 
 <body>
 	<section id="main">
 		<h1>Connexion</h1>
-		<form method="POST" action="connect">
-        <h3>Pseudo</h3>
+		<h3 th:if="${errorMsg!=null}" th:text="${errorMsg}" class="error"></h3>
+		<h3 th:if="${succesMsg!=null}" th:text="${succesMsg}" class="succes"></h3>
+		<form method="POST" action="login">
+        <h3 class="login">Pseudo</h3>
         <input id="boite" type="text" name="pseudo" /><br />
-        <h3>Mot de passe</h3>
+        <h3 class="login">Mot de passe</h3>
         <input id="boite" type="password" name="mdp" /><br />
         <input id="connexion" type="submit" value="Connexion"/>
         </form>

@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Register - MPB</title>
-    <link href="css/inscription.css" rel="stylesheet" type="text/css">
+    <link href="css/register.css" rel="stylesheet" type="text/css">
 </head>
 
 
 <body>
 	<section id="main">
-        <h3 th:if="${errormsg!=null}" th:text="${errormsg}"></h3>
+
 		<h1>Inscription</h1>
+        <h3 th:if="${errorMsg!=null}" th:text="${errorMsg}" class="error"></h3>
 		<form method="POST" action="register">
-		<h3>Prénom</h3>
+		<h3 class="register">Prénom</h3>
         <input class="boite" type="text" name="prenom" /><br />
-        <h3>Nom</h3>
+            <h3 class="register">Nom</h3>
         <input class="boite" type="text" name="nom" /><br />
-        <h3>Email</h3>
+            <h3 class="register">Email</h3>
         <input class="boite" type="text" name="email" /><br />
-        <h3>Pseudo</h3>
+            <h3 class="register">Pseudo</h3>
         <input class="boite" type="text" name="pseudo" /><br />
-        <h3>Mot de passe</h3>
+            <h3 class="register">Mot de passe</h3>
         <input class="boite" type="password" name="mdp" /><br />
-        <h3>Confirmation du mot de passe</h3>
+            <h3 class="register">Confirmation du mot de passe</h3>
         <input class="boite" type="password" name="mdp2" /><br />
         <input id="connexion" type="submit" value="Inscription"/>
         </form>

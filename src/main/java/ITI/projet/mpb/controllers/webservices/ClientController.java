@@ -52,7 +52,7 @@ public class ClientController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Client getClientViaEmail(@PathParam("email") String email) {
-        return ClientService.getInstance().getClientViaCourriel(email);
+        return ClientService.getInstance().getClientViaEmail(email);
     }
 
     @Path("/{idClient}")
@@ -72,7 +72,6 @@ public class ClientController {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
-
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -86,11 +85,12 @@ public class ClientController {
             return Response.status(Response.Status.CONFLICT).build();
         } catch (RuntimeErrorException e) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
+        }catch (Exception e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
 
     @PATCH
-    @Path("{/clientId}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response editClient(ClientDto clientDto){
         try{
@@ -114,4 +114,3 @@ public class ClientController {
         }
     }
 }
-

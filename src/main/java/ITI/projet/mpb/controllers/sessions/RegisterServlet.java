@@ -17,18 +17,18 @@ import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterServlet extends GenericAppServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	WebContext context = new WebContext(req, resp, req.getServletContext());
-		if(req.getSession().getAttribute("errorMsg")!=null){
-			context.setVariable("errorMsg",req.getSession().getAttribute("errormsg"));
-			req.getSession().setAttribute("errorMsg",null);
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		WebContext context = new WebContext(req, resp, req.getServletContext());
+		if (req.getSession().getAttribute("errorMsg") != null) {
+			context.setVariable("errorMsg", req.getSession().getAttribute("errorMsg"));
+			req.getSession().setAttribute("errorMsg", null);
 		}
 		TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-        templateEngine.process("register", context, resp.getWriter());
-    }
+		templateEngine.process("register", context, resp.getWriter());
+	}
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//implementer le traitement du formulaire de contact
 		String Prenom = req.getParameter("prenom");
 		String Nom = req.getParameter("nom");
@@ -40,24 +40,22 @@ public class RegisterServlet extends GenericAppServlet {
 			req.getSession().setAttribute("errorMsg", "Le mot de passe doit avoir 8 caractères au moins");
 			resp.sendRedirect("/register");
 		} else {
-			boolean Confirmation = MotDePasseServiceHash.genererMotDePasse(req.getParameter("mdp")) == MotDePasseServiceHash.genererMotDePasse(req.getParameter("mdp2"));
-			if (Confirmation == true) {
+			boolean Confirmation = MotDePasseServiceHash.validerMotDePasse(req.getParameter("mdp2"),Mdp);
+			if (Confirmation) {
 				try {
 					Client newClient = new Client(Nom, Prenom, Mail, Pseudo, Mdp, 1);
 					ClientService.getInstance().addClient(newClient);
-					Client finishClient = ClientService.getInstance().getClientViaPseudo(Pseudo);
-					// si creation on redirige vers la connexion avec un msg succes
+					// si creation OK on redirige vers la connexion avec un msg succes
 					req.getSession().setAttribute("succesMsg", "Inscription Réussie. Merci de vous connecter");
-					resp.sendRedirect("/connect");
+					resp.sendRedirect("/login");
+				} catch (ClientAlreadyException cae) {
+					//Si un client possède deja un attribut fournit dans le formulaire de connexion
+					req.getSession().setAttribute("errorMsg", cae.getMessage());
+					resp.sendRedirect("/register");
 				} catch (IllegalArgumentException iae) {
 					// Si erreur on ajoute le message d'erreur dans la session et on redirige sur la page de creation
 					req.getSession().setAttribute("errorMsg", iae.getMessage());
-					resp.sendRedirect("/register");
-				} catch (ClientAlreadyException cae) {
-					//Si un client possede deja un attribut fournit dans le formulaire de connexion
-					req.getSession().setAttribute("errorMsg", cae.getMessage());
-					resp.sendRedirect("/register");
-				}
+					resp.sendRedirect("/register");}
 
 
 			} else {
@@ -66,6 +64,4 @@ public class RegisterServlet extends GenericAppServlet {
 			}
 		}
 	}
-
-
 }

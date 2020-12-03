@@ -1,5 +1,8 @@
 package ITI.projet.mpb.pojos;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ClientDto
 {
     private Integer id;
@@ -11,10 +14,15 @@ public class ClientDto
     private Integer idRole;
     private Integer modif;
 
-
-
-
-    public ClientDto(Integer id,String nom,String prenom,String email,String pseudo,double solde,Integer idRole,Integer modif)
+    @JsonCreator
+    public ClientDto(@JsonProperty(value="id",required = true)Integer id,
+                     @JsonProperty(value="nom",required = true)String nom,
+                     @JsonProperty(value="prenom",required = true)String prenom,
+                     @JsonProperty(value="email",required = true)String email,
+                     @JsonProperty(value="pseudo",required = true)String pseudo,
+                     @JsonProperty(value="solde",required = true)double solde,
+                     @JsonProperty(value="idRole",required = true)Integer idRole,
+                     @JsonProperty(value="modif",required = true)Integer modif)
     {
         this.id=id;
         this.nom=nom;
