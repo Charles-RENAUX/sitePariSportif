@@ -29,7 +29,7 @@ public class ClientDto
         this.prenom=prenom;
         this.email=email;
         this.pseudo=pseudo;
-        this.solde=0;
+        this.solde=solde;
         this.idRole=idRole;
         this.modif=modif;
     }
@@ -95,5 +95,19 @@ public class ClientDto
 
     public void setModif(Integer modif) {
         this.modif = modif;
+    }
+
+    @Override
+    public String toString() {
+        return "ClientDto{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", pseudo='" + pseudo + '\'' +
+                ", solde=" + solde +
+                ", idRole=" + idRole +
+                ", modif=" + modif +
+                '}';
     }
 }

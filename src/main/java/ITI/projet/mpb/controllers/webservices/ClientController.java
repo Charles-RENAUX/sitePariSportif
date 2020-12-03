@@ -4,7 +4,9 @@ import ITI.projet.mpb.exceptions.ClientAlreadyException;
 import ITI.projet.mpb.exceptions.ClientNotFoundException;
 import ITI.projet.mpb.pojos.Client;
 import ITI.projet.mpb.pojos.ClientDto;
+import ITI.projet.mpb.pojos.ClientMdp;
 import ITI.projet.mpb.services.ClientService;
+import ITI.projet.mpb.services.MotDePasseServiceHash;
 
 import javax.management.RuntimeErrorException;
 import javax.ws.rs.*;
@@ -99,9 +101,11 @@ public class ClientController {
                 String pwd=ClientService.getInstance().getDefaultPwd();
                 Client clientToAdd=new Client(clientDto,pwd);
                 ClientService.getInstance().editClient(clientToAdd);
+
                 return Response.status(Response.Status.OK).build();
             }else if (edit==1){
                 Client clientToAdd=new Client(clientDto,"");
+
                 ClientService.getInstance().editClientNoPwd(clientToAdd);
                 return Response.status(Response.Status.OK).build();
             }else{
@@ -113,4 +117,25 @@ public class ClientController {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
+    @Path("/editpwd")
+    @PATCH
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editPwd(ClientMdp clientMdp){
+        if (!clientMdp.getPwd1().equals(clientMdp.getPwd2())){
+           return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+        }
+        Client clientcheck=ClientService.getInstance().getClient(clientMdp.getId());
+        if (clientcheck==null){
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        if(!MotDePasseServiceHash.validerMotDePasse(clientMdp.getOldPwd(),clientcheck.getMotDePasse())){
+            return Response.status(Response.Status.CONFLICT).build();
+        }
+        else {
+            clientcheck.setMotDePasse(MotDePasseServiceHash.genererMotDePasse(clientMdp.getPwd1()));
+            ClientService.getInstance().editClient(clientcheck);
+            return Response.status(Response.Status.ACCEPTED).build();
+        }
+    }
+
 }

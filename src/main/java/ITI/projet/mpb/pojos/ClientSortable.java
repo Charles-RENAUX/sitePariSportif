@@ -30,7 +30,15 @@ public enum ClientSortable {
                 return clientSortable.dbSort;
             }
         }
-        throw new IllegalArgumentException(String.format("The JS Sortable  %s has no equivalent"));
+        throw new IllegalArgumentException(String.format("The JS Sortable  %s has no equivalent",jsSort));
+    }
+
+    @Override
+    public String toString() {
+        return "ClientSortable{" +
+                "jsSort='" + jsSort + '\'' +
+                ", dbSort='" + dbSort + '\'' +
+                '}';
     }
 }
 
