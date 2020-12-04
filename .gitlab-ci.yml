@@ -1,0 +1,3 @@
+hello-world:
+    image:alpine:latest
+    script:echo "Hello World"

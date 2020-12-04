@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Débutant - MPB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/home.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav th:insert="~{fragments/base ::menu}" class="navbar navbar-inverse navbar-expand-md"></nav>
+
+<header th:if="${img == 0}" th:insert="~{fragments/beginners ::headerart0}" class="art0">
+</header>
+
+<header th:if="${img == 1}" th:insert="~{fragments/beginners ::headerart1(title=${title})}"class="art1">
+</header>
+
+
+<main>
+        <h1 class="container">
+            <div class="row">
+                <div th:insert="~{fragments/beginners ::__${name}__}" class="col-sm-8 beginners">
+
+
+                </div>
+                <div th:insert="~{fragments/base ::aside}" class="col-sm-4 ">
+                </div>
+
+            </div>
+        </h1>
+</main>
+
+<footer th:insert="~{fragments/base ::footer}" class="footer footer-black footer-big">
+</footer>
+
+
+
+</body>
+</html>

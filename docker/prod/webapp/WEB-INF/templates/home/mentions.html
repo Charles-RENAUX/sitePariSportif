@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Débutant - MPB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/home.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav th:insert="~{fragments/base ::menu}" class="navbar navbar-inverse navbar-expand-md"></nav>
+
+<!--- Header Commun à créer dans Base et insérer ici --->
+
+<header th:replace="~{fragments/base ::headercommon('Mentions Légales')}" class="art1"></header>
+
+<main>
+        <h1 class="container">
+            <div class="row">
+                <div class="col-sm-8 basicd">
+                <!-- Partie à compléter avec le txt Mentions -->
+                    <p><strong>Directeur de rédaction</strong>  : Jules WILLARD </p>
+                    <p></p>
+                    <p><strong>Contact </strong>: contact@monpetitbet.fr </p>
+                    <p></p>
+                    <p><strong>Adresse </strong>: 52 rue des Ponts de comines, Lille </p>
+                    <p></p>
+                    <p><strong>Hébergement </strong>: </p>
+                    <p></p>
+                    <p>Techcrea Solutions SARL </p>
+                    <p>FirstHeberg.com </p>
+                    <p></p>
+                    <p>SAS au capital social de 28 100 euros </p>
+                    <p>RCS Valenciennes 519 909 709 </p>
+                    <p>Code APE 6202A </p>
+                    <p>N° TVA : FR 82 519 909 709 </p>
+                    <p>Siège social : 70 rue Jean Jaures - 59770 MARLY - France. </p>
+                    <p>Directeur de la publication : Jérémy Martin. </p>
+                    <p></p>
+                </div>
+                <div th:insert="~{fragments/base ::aside}" class="col-sm-4 ">
+                </div>
+
+            </div>
+        </h1>
+</main>
+
+<footer th:insert="~{fragments/base ::footer}" class="footer footer-black footer-big">
+</footer>
+
+
+
+</body>
+</html>

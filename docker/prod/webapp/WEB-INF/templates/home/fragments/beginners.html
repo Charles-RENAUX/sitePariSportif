@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Ici on mettra tous les articles débutants en HTML-->
+
+<header th:fragment=="headerart0">
+    <div class="container text-center">
+        <img class="bookmakers" src="../img/home/sports.jpg" Width ="100% auto">
+    </div>
+</header>
+
+<header th:fragment=="headerart1(title)">
+    <div class="container text-center">
+        <h1 th:text="${title}">Titre de niveau 1</h1>
+    </div>
+</header>
+
+
+
+<div th:fragment="bets">
+    <p class="sub"> Un pari sportif consiste à miser de l'argent, chez un Bookmaker, sur un évènement qui va, selon vous, survenir lors d'une rencontre sportive. </p>
+    <p> On peut parier sur la victoire d'une équipe ou d'une autre, sur un match nul entre deux équipes, sur le nombre de buts, des buteurs et bien d'autres choses. </p>
+    <p>Traditionnellement le pari se fait avant le match, bien que ces dernières années, beaucoup de per-sonnes mises en live, afin de pouvoir bénéficier du cashout. </p>
+    <p>Ce dernier, consiste à « vendre » son pari, au bookmaker, afin de faire un gain ou limiter une perte, durant le match. </p>
+    <p class ="sub">Les gain d'argents dans les paris sportifs fonctionnent avec une côte. </p>
+    <p>De formats divers à travers le monde, les côtes européennes sont exprimées sous la forme d'un nombre décimal. </p>
+    <p>Celui-ci représente l'inverse d'une probabilité, ajusté d'un coefficient pour rémunérer le bookmaker. </p>
+    <p>Une côte ne descendra jamais en dessous de 1 et peut monter très haut, si l'évènement est quasi impossible. </p>
+    <p>A titre d'information, la victoire de Leicester en Premier League 2015/2016 était côté à 5000 en raison du fait qu'ils étaient derniers à la mi-saison d'avant. </p>
+
+    <p class="sub">Rien de mieux qu'un exemple pour illustrer le fonctionnement d'une côte :
+    <p></p>
+    <p>Match de Ligue 1 entre PSG et St-Etienne, la côte sur la victoire de St-Etienne est de 2.13, celle sur la victoire du PSG est de 1.11 et le match nul est coté à 1.67. </p>
+    <p class ="sub">Cela signifie que si vous pariez 20e sur une victoire du PSG, et que l'issue va dans votre sens, vous gagnerez votre mise multipliée par la côte de la victoire du PSG, soit 20x1.11=22.12 euros. </p>
+
+    <p>Vous gagnez peu comparativement à votre mise car ce n'est pas un pari risqué. </p>
+    <p>En effet, le PSG a de beaucoup plus grandes chances de gagner ce match que St-Etienne. </p>
+    <p>S'il y a match nul ou victoire de St-Etienne, cela ne correspond pas à votre prédiction et vous perdez donc votre mise de 20e. </p>
+    <p class="sub">Cependant si vous pariez sur une victoire de St-Etienne, et qu'en effet ils gagnent, vous gagnerez votre mise multipliée par la côte de la victoire de St-Etienne, soit 20x2.13=42.6 euros. </p>
+    <p>Vous gagnez beaucoup car votre prédiction était risquée, St-Etienne avait peu de chances de gagner et vous l'aviez prédit. </p>
+    <p>S'il y a match nul ou victoire du PSG, cela ne correspond pas à votre prédiction et vous perdez donc votre mise de 20e. </p>
+    <p>Vous pouvez aussi parier sur le match nul et le fonctionnement est le même si vous gagnez, avec la côte correspondante au match nul. </p>
+    <p>Il existe aussi des paris plus complexes, qui ont moins de chances de se passer car la prédiction est plus précise et qui ont donc généralement une côte plus élevée. </p>
+    <p>On peut ainsi parier, sur les handicaps des équipes, comme par exemple sur une « victoire du PSG avec plus de 2 buts d'avances ». </p>
+    <p>On peut aussi parier sur une « victoire du PSG avec but de Di Maria » ou encore une « victoire de St-Etienne en prolongations », si c'est un match de coupes. </p>
+    <p>Les côtes proposées aux parieurs peuvent varier entre deux bookmakers. </p>
+    <p>Elles sont conçues à partir de probabilités (qui peuvent varier en fonction de l'appréciation du bookmaker). </p>
+    <p>Les côtes sont également ajustées en fonction des mises des joueurs. </p>
+    <p> Si une côte est trop élevée, de nombreux parieurs vont se jeter dessus ce qui aura pour effet de faire chuter la côte pour les futurs joueurs. </p>
+    <p>Pour des raisons commerciales, les bookmakers peuvent ajuster les côtes de façon à devenir très avantageuses. </p>
+    <p>C'est une technique qui permet d'attirer de nouveaux joueurs chez les bookmakers. </p>
+    <p>Pourtant, choisir votre pari en fonction de la meilleure côte du marché n'est pas forcément un choix judicieux en paris sportifs. </p>
+    <p>En bref en optant pour un bookmaker offrant des côtes compétitives, vous augmenterez la rentabilité de vos paris gagnants. </p>
+    <p></p>
+</div>
+
+
+<div th:fragment="book">
+    <p class="sub">Un bookmaker est un opérateur de paris sportifs, il en existe 16 en France qui sont actifs et approuvés par l'Autorité des Jeux (ANJ) anciennement,  l'Autorité Régulation des Jeux en Ligne (l'ARJEL). </p>
+    <p>Ce mot d'origine anglaise, peut se traduire par "Preneur de paris" en français. </p>
+    <p>Si on transpose au monde de la finance, les bookmakers correspondent aux brokers.
+    <p>Le mot bookie est également utilisé mais de manière plus occasionnelle. </p>
+    <p>Concrètement, il désigne l'entité (personne ou société) qui organise et enregistre les paris sur des événements (sportifs ou autre) dans le cadre de jeux d'argent. </p>
+    <p>A chaque rencontre sportive, un bookmaker sportif vous propose une côte sur un évènement possible, son expertise et sa connaissance du sport lui permettent d'estimer assez précisément les probabilités de tout type d'évènement. </p>
+    <p class="sub">Vous pouvez prendre un pari chez un bookmaker : </p>
+    <p>- Soit pour vous amuser en suivant votre équipe favorite </p>
+    <p>- Soit parce que vous pensez qu'une cote est intéressant. Si vous avez raison, vous gagnerez de l'argent </p>
+    <p>- Soit parce que vous avez envie, rien ne vous limite </p>
+    <p>Tous les bookmakers proposent une offre de bienvenue pour les arrivants qui n'ont jamais pariés, s'élevant en moyenne à 100e maximum en paris remboursés (modalités différentes en fonctions des bookmakers, toutes ces offres sont expliquées dans la rubrique « Offre de bienvenue » d'un book sur ce site). </p>
+    <p>Une offre de parrainage, est possible avec généralement des paris gratuits au parrain et au parrainé (encore une fois, les modalités sont différentes en fonctions des bookmakers, toutes ces offres sont expliquées dans la rubrique « Offre de parrainage » d'un book sur ce site). </p>
+    <p class="sub">Les bookmakers proposent tous aujourd'hui des moyens de paiement très étendus, par carte ban-caire (Visa ou Mastercard), par virement bancaire, avec des portefeuilles électroniques (comme Paypal, Skrill, Paylib,...), ou encore par carte prépayée (achetables notamment en bureau de tabac). </p>
+    <p>Les gains peuvent être retirés sur votre compte en banque, français, à l'aide de l'IBAN fournit lors de l'inscription. </p>
+    <p></p>
+</div>
+
+<div th:fragment="sports">
+    <p class="sub">Avant de choisir une côte, il faut sélectionner un sport et une compétition. </p>
+    <p>Le choix est important, car les bookmakers vont en privilégier,certains  afin mettre des cotes intéressantes pour attirer de nouveaux parieurs, et ainsi augmenter votre rendement en cas de victoire. </p>
+    <p class ="sub">Le sport qui génère la moitié du volume total de mises,  est le football. </p>
+    <p>Avec près de 2.75 milliards d'euros générés en 2019,il est largement en tête avec un hausse de 16% par rapport à 2018. </p>
+    <p>Cette hausse est d'autant remarquable car l'année précédente, avait vu la consécration de la France championne du monde, ce qui avait fortement boosté les paris. </p>
+
+    <p class ="sub">Le tennis est en 2ème position avec ses 1.155 milliard d'euros soit une ascension de 46% par rapport à 2018. </p>
+    <p>On retrouve ensuite le basket, qui a fait 596 millions d'euros en 2019 (+56% par rapport à 2018),puis  le rugby avec 137 millions d'euros (+61%), le hockey sur glace avec 115 millions d'euros (+24%), le volley avec 99 millions d'euros (+57%).
+    <p>C'est donc pour les paris sportifs, une période hausse globale (+30% en 2019 par rapport à 2018), associé à ine augmentation des nouveaux arrivant de (+7%), c'est peut-être votre moment de profiter de tout ça grâce à MonPetitBet . </p>
+    <p></p>
+
+</div>
+
+
+</html>
