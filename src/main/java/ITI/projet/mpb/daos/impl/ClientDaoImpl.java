@@ -38,12 +38,12 @@ public class ClientDaoImpl implements ClientDao
 	public List<Client> list(String dbSort)
 	{
 		List<Client> result=new ArrayList<>();
-		String sql="SELECT * FROM clients ORDER BY ?";
+		String sql="SELECT * FROM clients ORDER BY "+dbSort;
 		try {
 			DataSource dataSource = DataSourceProvider.getDataSource();
 			try (Connection cnx = dataSource.getConnection();
 				 PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
-				preparedStatement.setString(1, dbSort);
+				System.out.println(dbSort);
 				try(ResultSet resultSet = preparedStatement.executeQuery()) {
 					while(resultSet.next()) {
 						result.add(createClientFromResultSet(resultSet));
@@ -60,13 +60,12 @@ public class ClientDaoImpl implements ClientDao
 	public List<Client> listByRole(Integer role,String dbSort)
 	{
 		List<Client> result=new ArrayList<>();
-		String sql="SELECT * FROM clients JOIN roles on clients.id_role=roles.id_role WHERE clients.id_role=? ORDER BY ?";
+		String sql="SELECT * FROM clients JOIN roles on clients.id_role=roles.id_role WHERE clients.id_role=? ORDER BY "+dbSort;
 		try {
 			DataSource dataSource = DataSourceProvider.getDataSource();
 			try (Connection cnx = dataSource.getConnection();
 				 PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
 				preparedStatement.setInt(1, role);
-				preparedStatement.setString(2,dbSort);
 				try(ResultSet resultSet = preparedStatement.executeQuery()) {
 					while(resultSet.next()) {
 						result.add(createClientFromResultSet(resultSet));
@@ -81,6 +80,7 @@ public class ClientDaoImpl implements ClientDao
 	
 	private Client createClientFromResultSet(ResultSet resultSet) throws SQLException
 	{
+		System.out.println(resultSet.getString("pseudo"));
 		return new Client(
 				resultSet.getInt("id_client"),
 				resultSet.getString("nom"),
@@ -266,6 +266,8 @@ public class ClientDaoImpl implements ClientDao
 
 		}catch (SQLException e){
 			e.printStackTrace();
+		}	catch (NullPointerException e){
+			throw new ClientNotFoundException("The client doesn't exist");
 		}
 	}
 

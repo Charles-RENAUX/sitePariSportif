@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import ITI.projet.mpb.daos.ClientDao;
 import ITI.projet.mpb.daos.impl.ClientDaoImpl;
 import ITI.projet.mpb.exceptions.ClientAlreadyException;
+import ITI.projet.mpb.exceptions.ClientNotFoundException;
 import ITI.projet.mpb.pojos.Client;
 import ITI.projet.mpb.pojos.ClientSortable;
 
@@ -76,7 +77,13 @@ public class ClientService {
 		if (client == null) {
 			throw new IllegalArgumentException("The client can not be null.");
 		}
-		if (getClientViaPseudo(client.getPseudo())!=null){throw new ClientAlreadyException("Le pseudo est déjà prise");
+		if (client.getPseudo() == null) {
+			throw new IllegalArgumentException(" 'pseudo' can not be null.");
+		}
+		if (getClientViaPseudo(client.getPseudo())!=null){throw new ClientAlreadyException("Le pseudo est déjà pris");
+		}
+		if (client.getEmail() == null||"".equals(client.getEmail())) {
+			throw new IllegalArgumentException(" 'email' can not be null.");
 		}
 		if (getClientViaEmail(client.getEmail())!=null){throw new ClientAlreadyException("L'adresse mail est déjà prise");
 		}
@@ -86,18 +93,13 @@ public class ClientService {
 		if (client.getPrenom() == null||"".equals(client.getPrenom())) {
 			throw new IllegalArgumentException(" 'prenom' can not be null.");
 		}
-		if (client.getEmail() == null||"".equals(client.getEmail())) {
-			throw new IllegalArgumentException(" 'email' can not be null.");
-		}
 		if(!checkMail(client.getEmail())) {
 			throw new IllegalArgumentException("'email' must be in the right format");
 		}
 		if (client.getMotDePasse() == null) {
 			throw new IllegalArgumentException(" 'mot de passe' can not be null.");
 		}
-		if (client.getPseudo() == null) {
-			throw new IllegalArgumentException(" 'pseudo' can not be null.");
-		}
+
 		clientDao.addClient(client);
 	}
 
@@ -105,28 +107,60 @@ public class ClientService {
 		if (client == null) {
 			throw new IllegalArgumentException("The client can not be null.");
 		}
-		if (client.getNom() == null) {
+		try {
+			getClientViaPseudo(client.getPseudo()).getId();
+			if (getClientViaPseudo(client.getPseudo()).getId()!=client.getId()){throw new ClientAlreadyException("Le pseudo est déjà pris");
+			}
+		}catch (NullPointerException e){
+
+		}
+		if (client.getEmail() == null||"".equals(client.getEmail())) {
+			throw new IllegalArgumentException(" 'email' can not be null.");
+		}
+		try {
+			getClientViaEmail(client.getEmail()).getId();
+			if (getClientViaEmail(client.getEmail()).getId()!=client.getId()){throw new ClientAlreadyException("Le pseudo est déjà pris");
+			}
+		}catch (NullPointerException e){
+
+		}
+		if (client.getNom() == null||"".equals(client.getNom())) {
 			throw new IllegalArgumentException(" 'nom' can not be null.");
 		}
-		if (client.getPrenom() == null) {
+		if (client.getPrenom() == null||"".equals(client.getPrenom())) {
 			throw new IllegalArgumentException(" 'prenom' can not be null.");
-		}
-		if (client.getEmail() == null) {
-			throw new IllegalArgumentException(" 'email' can not be null.");
-		}if(!checkMail(client.getEmail())) {
-			throw new IllegalArgumentException("'email' must be in the right format");
 		}
 		if (client.getMotDePasse() == null) {
 			throw new IllegalArgumentException(" 'mot de passe' can not be null.");
-		}
-		if (client.getPseudo() == null) {
-			throw new IllegalArgumentException(" 'pseudo' can not be null.");
 		}
 		clientDao.editClient(client);
 	}
 	public void editClientNoPwd(Client client) {
 		if (client == null) {
 			throw new IllegalArgumentException("The client can not be null.");
+		}
+		if (client.getPseudo() == null) {
+			throw new IllegalArgumentException(" 'pseudo' can not be null.");
+		}
+		if (getClient(client.getId()) == null) {
+			throw new ClientNotFoundException("Le client n'existe pas");
+		}
+		try {
+			getClientViaPseudo(client.getPseudo()).getId();
+			if (getClientViaPseudo(client.getPseudo()).getId()!=client.getId()){throw new ClientAlreadyException("Le pseudo est déjà pris");
+			}
+		}catch (NullPointerException e){
+
+		}
+		if (client.getEmail() == null||"".equals(client.getEmail())) {
+			throw new IllegalArgumentException(" 'email' can not be null.");
+		}
+		try {
+			getClientViaEmail(client.getEmail()).getId();
+			if (getClientViaEmail(client.getEmail()).getId()!=client.getId()){throw new ClientAlreadyException("Le pseudo est déjà pris");
+			}
+		}catch (NullPointerException e){
+
 		}
 		if (client.getNom() == null||"".equals(client.getNom())) {
 			throw new IllegalArgumentException(" 'nom' can not be null.");
@@ -136,12 +170,6 @@ public class ClientService {
 		}
 		if (client.getEmail() == null||"".equals(client.getEmail())) {
 			throw new IllegalArgumentException(" 'email' can not be null.");
-		}
-		if(!checkMail(client.getEmail())) {
-			throw new IllegalArgumentException("'email' must be in the right format");
-		}
-		if (client.getPseudo() == null) {
-			throw new IllegalArgumentException(" 'pseudo' can not be null.");
 		}
 		clientDao.editClientNoPwd(client);
 	}

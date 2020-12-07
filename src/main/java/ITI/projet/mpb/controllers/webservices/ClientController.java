@@ -72,6 +72,11 @@ public class ClientController {
             return Response.status(Response.Status.OK).build();
         } catch (ClientNotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
+        }catch (IllegalArgumentException e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }catch (Exception e){
+            e.printStackTrace();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
     }
     @POST
@@ -85,10 +90,11 @@ public class ClientController {
             return Response.status(Response.Status.CREATED).build();
         } catch (ClientAlreadyException e) {
             return Response.status(Response.Status.CONFLICT).build();
-        } catch (RuntimeErrorException e) {
-            return Response.status(Response.Status.NOT_MODIFIED).build();
-        }catch (Exception e){
+        }catch (IllegalArgumentException e){
             return Response.status(Response.Status.BAD_REQUEST).build();
+        }catch (Exception e){
+            e.printStackTrace();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
     }
 
@@ -115,6 +121,14 @@ public class ClientController {
 
         }catch (ClientNotFoundException e){
             return Response.status(Response.Status.NOT_FOUND).build();
+        }catch (ClientAlreadyException e){
+            return Response.status(Response.Status.CONFLICT).build();
+        }
+        catch (IllegalArgumentException e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }catch (Exception e){
+            e.printStackTrace();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
     }
     @Path("/editpwd")
