@@ -2,7 +2,7 @@ header {
   margin-top:0%;
   padding: 0 0 0;
   margin:0 !important;
-  background-color: white;
+  background-color: black;
   padding-bottom:0;
   margin-bottom:0;
 }
@@ -17,7 +17,7 @@ margin-top: -7px;"
 
 
 .navbar-custom {
-	background-color:black!important;
+	background-color:#222important;
 }
 
 footer.footer.footer-black {
@@ -514,7 +514,7 @@ a:link
 {
 	width:225px;
 	height:1350px;
-	background-color:black;
+	background-color:#222;
 	float:left;
 }
 #container_list
@@ -538,12 +538,29 @@ a:link
 	height: 1100px;
 	padding-right:150px;
 	padding-left:25px;
+	overflow: hidden;
+}
+@media (min-width: 768px)
+#container-list-md, .container-sm, .container {
+    max-width: 768px;
+}
+@media (min-width: 576px)
+#container-list-sm, .container {
+    max-width: 576px;
+}
+@media (min-width: 768px)
+#container-list {
+    max-width: 768px;
+}
+@media (min-width: 576px)
+#container-list {
+    max-width: 576px;
 }
 #container_mdp
 {
 	top : 50px;
 	left:250px;
-	position: fixed;
+	position: absolute;
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-direction: column;
@@ -563,3 +580,11 @@ a:link
 	padding-right:150px;
 	padding-left:25px;
 }
+p{
+text-align:center;
+}
+
+<h3 th:if="${errorMsg!=null}" th:text="${errorMsg}" class="error"></h3>
+        <h3 th:if="${succesMsg!=null}" th:text="${succesMsg}" class="succes"></h3>
+
+

@@ -1,4 +1,5 @@
-var URLBASE="http://localhost:8080/";
+// Objet pour filtrer la liste
+var BASEURL="http://localhost:8080/";
 
 // 1 - Fonctions AJAX
 
@@ -6,7 +7,7 @@ var URLBASE="http://localhost:8080/";
 //Lister tous les bets
 let listAll = function() {
     let betsRequest = new XMLHttpRequest();
-    let url = URLBASE +"api/bets" ;
+    let url = BASEURL+"api/bets" ;
     betsRequest.open("GET", url, true);
     betsRequest.responseType = "json";
 
@@ -30,7 +31,7 @@ let listBet = function () {
         listAll()
     }else{
         let betsRequest = new XMLHttpRequest();
-        let url = URLBASE + "api/bets/";
+        let url = BASEURL+"api/bets/";
         if (sort .length==0 && filter.length>0) {
             url += "filter?name=" + filterName + "&filter=" + filter;
         } else if (sort.length>0 && filter.length==0) {
@@ -53,12 +54,11 @@ let listBet = function () {
 // Suppression d'un bet
 let deleteBet = function (bet) {
         let deleteRequest = new XMLHttpRequest();
-        deleteRequest.open("DELETE", "/bet/" + bet.id, true);
-
+        let url= BASEURL+"api/bets/"+bet.id;
+        deleteRequest.open("DELETE", url, true);
         deleteRequest.onload = function () {
             listBet();
         };
-
         deleteRequest.send();
     }
 
@@ -130,6 +130,9 @@ let buildTableLine = function (bet) {
     lineElement.appendChild(createTableCell(bet.odd2));
     lineElement.appendChild(createTableCell(bet.odd3));
 
+    let actionCell = document.createElement("td");
+        let buttonGroupElement = document.createElement("div");
+            buttonGroupElement.classList.add("btn-group");
     //creation bouton modifier (ou show) dans chaque ligne
     let showButton = document.createElement("button");  // création element bouton
         showButton.classList.add("btn", "btn-primary", "btn-sm"); // ajout d'une classe pour le Bootstraps
@@ -137,9 +140,11 @@ let buildTableLine = function (bet) {
         showButton.title = "Modify";//titre du bouton
         showButton.onclick = function () 
         {
-            showClient(client); // on appel la fonction showClient pour modifier la ligne
+            showBet(bet); // on appel la fonction showClient pour modifier la ligne
         };
-    buttonGroupElement.appendChild(showButton); // Appendchild du bouton dans Tr
+    buttonGroupElement.appendChild(showButton);
+    // Appendchild du bouton dans Tr
+
 
     //creation bouton delete dans chaque ligne
     let deleteButton = document.createElement("button");
@@ -148,10 +153,14 @@ let buildTableLine = function (bet) {
         deleteButton.title = "Delete";
         deleteButton.onclick = function () 
         {
-            deleteClient(client);
+            deleteBet(bet);
         };
-    buttonGroupElement.appendChild(deleteButton);
+    lineElement.appendChild(deleteButton);
+    actionCell.appendChild(buttonGroupElement);
+    lineElement.appendChild(actionCell);
+
     return lineElement;
+
 }
 
 let createTableCell = function (text, header = false) {
@@ -160,7 +169,7 @@ let createTableCell = function (text, header = false) {
     return cellElement;
 };
 
-
+let formMode;
 let showBet = function (bet) {
     formMode = bet.id ? UPDATE : CREATION;
 
@@ -214,9 +223,9 @@ window.onload = function () {
     document.getElementById("apply-parameters").onclick = function () {
         listBet();
     }
-/*
+
     document.getElementById("add-button").onclick = function () {
-        showBet({id: "", nom: {}, prenom: "", pseudo: "",email:""});
+        showBet({id: "", idLeague: "", League: "", DateMatch: "",Home:"",Away:"",DateOdd:"",Market:"",MarketB:"",Odd1:"",Odd2:"",Odd3:""});
     };
 
     document.getElementById("go-back").onclick = function () {
@@ -224,8 +233,8 @@ window.onload = function () {
         document.getElementById("list").hidden = false;
     };
 
-    document.getElementById("save-form").onclick = saveForm;
-
-     */
+    document.getElementById("save-form").onclick = function(){
+    saveForm();
+    }
 };
 

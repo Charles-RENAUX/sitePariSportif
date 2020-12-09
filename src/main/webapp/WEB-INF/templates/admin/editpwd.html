@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8" />
     <title>Formulaire Nouveau Mot de Passe</title>
 
-    <link rel="stylesheet"  href="css/appAdmin.css" >
+    <link rel="stylesheet"  href="../css/app.css" >
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <script src="../js/appAdmin.js" type="application/javascript"></script>
 </head>
 
 
@@ -20,7 +19,7 @@
 
             <div class="navbar-header">
                 <img class="logo"
-                     src="img/logo.jpg">
+                     src="../img/home/logo.jpg">
                 <a class="navbar-brand" href="/index">
                     monPetitBet</a>
 
@@ -28,6 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                </button>
             </div>
         <div class="collapse navbar-collapse" id="mpbNavBar">
             <ul class="nav navbar-nav text-center">
@@ -62,36 +62,38 @@
 <header>
 		<div id="menu-display">
             <ul>
-             <li><a href="/admin"><t></br>Gestion des Clients</br></br></br></t></a></li>
+             <li><a href="/admin/"><t></br>Gestion des Clients</br></br></br></t></a></li>
 			<li><a href="/admin/bets"><t>Gestion Paris</br></br></br></t></a></li>
-            <li><a href="/admin/editpwd" target="_Blank"><t>Editer mon mot de passe</br></br></br></t></a></li>
+            <li><a href="/admin/editpwd"><t>Editer mon mot de passe</br></br></br></t></a></li>
             <li><a href="/disconnect"><t>Déconnexion</t></a></li>
-		</div>
+            </ul>
+        </div>
 </ul>
 </header>
 		<section>
 			<div id="container_mdp">
-				<form method='post'>
+				<form method='post' actiom="editpwd">
 				<ul>
 					<li>
 						<h3 th:if="${errorMsg!=null}" th:text="${errorMsg}" class="error"></h3>
-        <h3 th:if="${succesMsg!=null}" th:text="${succesMsg}" class="succes"></h3>
-						<label for='pass'><h4>Votre ancien mot de passe* :</h4></label><br/>
-						<input type='password' name='pass' id='mdp'/>
+                        <h3 th:if="${succesMsg!=null}" th:text="${succesMsg}" class="succes"></h3>
+						<label for="pwdOld"><h4>Votre ancien mot de passe* :</h4></label><br/>
+						<input type="password" name="pwdOld" id="pwdOld"/>
 					</li><br/>
 					<li>
-						<label for='NewPass'><h4>Votre nouveau mot de passe* :</h4></label><br/>
-						<input type='password' name='NewPass' id='mdp'/>
+						<label for='pwd1'><h4>Votre nouveau mot de passe* :</h4></label><br/>
+						<input type="password" name="pwd1" id="pwd1"/>
 					</li><br/>
 					<li>
-						<label for='NewPassVerif'><h4>Confirmez votre nouveau mot de passe* :</h4></label><br/>
-						<input type='password' name='NewPassVerif' />
+						<label for='pwd2'><h4>Confirmez votre nouveau mot de passe* :</h4></label><br/>
+						<input type='password' name="pwd2" id="pwd2" />
 						
 					</li><br/>
-					<a href="confirmation.html" target="_blank"><input type="button" value="Valider"></a>
+					<input type="submit" value="Valider"></a>
 				</ul>
 			</form>
 		</div>
 	</section>
+</body>
 </html>
 

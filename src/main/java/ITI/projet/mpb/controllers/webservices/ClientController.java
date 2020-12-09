@@ -4,9 +4,8 @@ import ITI.projet.mpb.exceptions.ClientAlreadyException;
 import ITI.projet.mpb.exceptions.ClientNotFoundException;
 import ITI.projet.mpb.pojos.Client;
 import ITI.projet.mpb.pojos.ClientDto;
-import ITI.projet.mpb.pojos.ClientMdp;
 import ITI.projet.mpb.services.ClientService;
-import ITI.projet.mpb.services.MotDePasseServiceHash;
+
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -20,7 +19,6 @@ import org.apache.logging.log4j.Logger;
 public class ClientController {
     private static final Logger LOGGER= LogManager.getLogger();
 
-    @Path("/all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Client> listAll() {
@@ -29,7 +27,7 @@ public class ClientController {
         return list;
     }
 
-
+    @Path("/sort")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Client> list(
@@ -154,31 +152,6 @@ public class ClientController {
         }catch (Exception e){
             e.printStackTrace();
             LOGGER.error("PATCH /client   pseudo={} 304 NOT MODIFIED ",clientDto.getPseudo());
-            return Response.status(Response.Status.NOT_MODIFIED).build();
-        }
-    }
-
-    //Uniquement pour les ADMINS
-    @Path("/editpwd")
-    @PATCH
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response editPwd(ClientMdp clientMdp){
-        if (!clientMdp.getPwd1().equals(clientMdp.getPwd2())){
-            LOGGER.error("PATCH /client/editpwd   pseudo={} 400 BAD REQUEST ",clientMdp.getPseudo());
-           return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-        try{
-            Client clientcheck=ClientService.getInstance().getClientViaPseudo(clientMdp.getPseudo());
-            if (clientcheck==null){
-                LOGGER.error("PATCH /client/editpwd   pseudo={} 404 NOT FOUND ",clientMdp.getPseudo());
-                return Response.status(Response.Status.NOT_FOUND).build();
-            }
-            clientcheck.setMotDePasse(MotDePasseServiceHash.genererMotDePasse(clientMdp.getPwd1()));
-            ClientService.getInstance().editClient(clientcheck);
-            LOGGER.debug("PATCH /client/editpwd   pseudo={} 201 ACCEPTED ",clientMdp.getPseudo());
-            return Response.status(Response.Status.ACCEPTED).build();
-        }catch (Exception e){
-            LOGGER.error("PATCH /client/editpwd   pseudo={} 304 NOT MODIFIED ",clientMdp.getPseudo());
             return Response.status(Response.Status.NOT_MODIFIED).build();
         }
     }

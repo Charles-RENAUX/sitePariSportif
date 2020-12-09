@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta charset="UTF-8" />
-    <title>Administration</title>
-
-    <link rel="stylesheet"  href="css/appAdmin.css" >
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <script src="../js/appAdmin.js" type="application/javascript"></script>
+    <title>MPB - Admin</title>
+    <link rel="stylesheet"  href="css/app.css" >
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="js/admin.js" type="application/javascript"></script>
 </head>
 
 
@@ -18,7 +17,7 @@
   <div class="container" id="container-main">
       
   <div class="navbar-header">
-     <img class="logo" src="img/logo.jpg" align="left"> <a class="navbar-brand" href="/index">  <text> monPetitBet</text>
+      <img class="logo" src="img/home/logo.jpg" align="left"> <a class="navbar-brand" href="/index"></a>  <text> MonPetitBet</text>
     
       <style type="text/css">
 text {
@@ -32,6 +31,7 @@ text {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+    </button>
     </div>
    <div class="collapse navbar-collapse" id="mpbNavBar">
     <ul class="nav navbar-nav text-center">
@@ -51,7 +51,8 @@ text {
 			<li><a href="MesParis-admin.html"><t>Gestion Paris</br></br></br></t></a></li>
             <li><a href="formulaire-nouveau-mdp.html" target="_Blank"><t>Editer mon mot de passe</br></br></br></t></a></li>
             <li><a href="#"><t>Déconnexion</t></a></li>
-		</div>
+            </ul>
+        </div>
 </ul>
 </header>
 
@@ -68,21 +69,46 @@ text {
                     <th scope="col">Prénom</th>
                     <th scope="col">Email</th>
                     <th scope="col">Pseudo</th>
-                    <th scope="col">Mot de passe</th>
                     <th scope="col">Solde</th>
                     <th scope="col">Role</th>
                 </tr>
             </thead>
             <tbody></tbody>
         </table>
-    
+
+    <section id="list">
+        <form class="form-inline" id="list-parameters">
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" class="form-control mx-sm-3">
+                    <option value="0" selected></option>
+                    <option value="1">User</option>
+                    <option value="1000">Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sort">Sorted by</label>
+                <select id="sort" class="form-control mx-sm-3">
+                    <option value="" selected></option>
+                    <option value="ID">Id</option>
+                    <option value="NOM">Nom</option>
+                    <option value="PRENOM">Prénom</option>
+                    <option value="PSEUDO">Pseudo</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-secondary" id="apply-parameters">Apply</button>
+
+        </form>
+        <p></p>
+        <p class="float-right"><button class="btn btn-primary" id="add-button" title="Add a new bet"><i class="fas fa-plus">New User</i></button></p>
+    </section>
 
     <section id="form">
         <h2>&thinsp;&thinsp;Detail du client</h2>
         <form>
             <div class="form-group">
                 <label for="code-input">&thinsp;&thinsp;Id</label>
-                <input type="text" class="form-control w-25" id="id">
+                <input type="text" class="form-control w-25" id="code-input">
             </div>
             <div class="form-group">
                 <label for="nom-input"> &thinsp;&thinsp;Nom </label>
@@ -106,12 +132,12 @@ text {
             </div>
             <div class="form-group">
                 <label for="role-input">&thinsp;&thinsp;Role</label>
-                <FORM>
-                    <SELECT name="nom" size="1">
-                    <OPTION selected>1
-                    <OPTION >2
-                </SELECT>
-            </FORM>
+                <form>
+                    <select name="nom" size="1" id="role-input">
+                    <option selected>User
+                    <option >Admin
+					</select>
+            </form>
             </div>
             <button type="button" class="btn btn-secondary" id="go-back">Go back to the list</button>
             <button type="submit" class="btn btn-primary" id="save-form">Sauvegarder</button>

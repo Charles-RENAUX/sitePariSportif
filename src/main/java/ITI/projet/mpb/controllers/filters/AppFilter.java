@@ -25,6 +25,8 @@ public class AppFilter implements Filter {
 
         if (request.getSession().getAttribute("user")==null){
             response.sendRedirect("/login");
+        }else if (request.getSession().getAttribute("admin")!=null) {
+            response.sendRedirect("/admin");
         }else{
             chain.doFilter(request,response);
         }

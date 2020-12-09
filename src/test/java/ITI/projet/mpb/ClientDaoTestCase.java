@@ -27,7 +27,7 @@ public class ClientDaoTestCase {
 			 Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM clients");
 			stmt.executeUpdate("DELETE FROM roles");
-			stmt.executeUpdate("INSERT INTO `roles`(`id_role`,`role`) VALUES (2,'Admin')");
+			stmt.executeUpdate("INSERT INTO `roles`(`id_role`,`role`) VALUES (1000,'Admin')");
 			stmt.executeUpdate("INSERT INTO `roles`(`id_role`,`role`) VALUES (1,'User')");
 			String mdp1=genererMotDePasse("mdp1");
 			String mdp2=genererMotDePasse("mdp2");
@@ -36,7 +36,7 @@ public class ClientDaoTestCase {
 			System.out.println(mdp1);
 			stmt.executeUpdate(
 					"INSERT INTO `clients`(`id_client`,`nom`, `prenom`,`email` , `pseudo`, `mdp`, `solde`,`id_role`) "
-							+ "VALUES (1, 'nom1', 'prenom1', 'nom1@fe.fr', 'pseudo1', '$argon2i$v=19$m=65536,t=5,p=1$7CFs/LfoperuSHgxdwQSf3oW5jV+le2YiVQvXf0EnZha2mZSFNd4+0e+Kq9vCuA0rWK4ZHV9n8JkeTkbsdGVJMykQ3z2gfyEzCfliszkNtiuHUEluinPVkhdFClmpraJO7JzpwwXbNoiArZrqC3REffqOKe1717IxOIKYaAb/1A$ScnLjTmQGqulw8Uyuyks9ujqSX7m1xXZDbFp9ARNf7ibAhfS+NEf+ihL2w225TP7nfXrnm8hs/0H0fGtKMAL49xIhYvTEhsF7uM0HIlK1zu8q0UAv3S+XO7y3mMFBCDrFL//tcOdpoPygrNANbLjhb6PgBRrSep9GGLarwnmg4s', 0,2)");
+							+ "VALUES (1, 'nom1', 'prenom1', 'nom1@fe.fr', 'pseudo1', '$argon2i$v=19$m=65536,t=5,p=1$7CFs/LfoperuSHgxdwQSf3oW5jV+le2YiVQvXf0EnZha2mZSFNd4+0e+Kq9vCuA0rWK4ZHV9n8JkeTkbsdGVJMykQ3z2gfyEzCfliszkNtiuHUEluinPVkhdFClmpraJO7JzpwwXbNoiArZrqC3REffqOKe1717IxOIKYaAb/1A$ScnLjTmQGqulw8Uyuyks9ujqSX7m1xXZDbFp9ARNf7ibAhfS+NEf+ihL2w225TP7nfXrnm8hs/0H0fGtKMAL49xIhYvTEhsF7uM0HIlK1zu8q0UAv3S+XO7y3mMFBCDrFL//tcOdpoPygrNANbLjhb6PgBRrSep9GGLarwnmg4s', 0,1000)");
 			stmt.executeUpdate(
 					"INSERT INTO `clients`(`id_client`,`nom`, `prenom`,`email` , `pseudo`, `mdp`, `solde`,`id_role`) "
 							+ "VALUES (2, 'nom2', 'prenom2', 'nom2@fe.fr', 'pseudo2','$argon2i$v=19$m=65536,t=5,p=1$rebuudtSd1tlC66mHlIdijqe3uW7CdI236lNrOkPkLJbmVj8mr3TIW+VJ0Dhsj3edQZiocW+TSfSjfo5BXNqy1iowKlKA1JPbC68FAL8V65LbCR3cgrYjN+gT1W6NuT9N2IzjX49L4+NCFeB2/SF1wP22kvuN9dvwZ0sfWXAT4M$o2qlkYHRxe00BN3YBzyCXnX3v5e6xIzseABCWs3UdO6xWUD4Io42XrijineRAInPTkda+Z6+7CP57xU/LLD67xhG5AhcyeTqfgO+O2MIg4+udjJKVd6m3HuqC+Inz8qFUqviIAQCN8On0u46M5o3iRQvk7Xho7Iei91EIm7i+G0',0,1)");
@@ -225,7 +225,7 @@ public class ClientDaoTestCase {
 	@Test
 	public void shouldDeleteClient() throws Exception{
 		//GIVEN
-		Integer idClient=4;
+		Integer idClient=2;
 		//WHEN
 		clientDao.deleteClient(idClient);
 		//THEN

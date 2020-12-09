@@ -15,8 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 @WebServlet("/register")
 public class RegisterServlet extends GenericAppServlet {
+
+	private static final Logger LOGGER = LogManager.getLogger();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -47,6 +53,7 @@ public class RegisterServlet extends GenericAppServlet {
 					ClientService.getInstance().addClient(newClient);
 					// si creation OK on redirige vers la connexion avec un msg succes
 					req.getSession().setAttribute("succesMsg", "Inscription Réussie. Merci de vous connecter");
+					LOGGER.debug("New User with pseudo:{}",newClient.getPseudo());
 					resp.sendRedirect("/login");
 				} catch (ClientAlreadyException cae) {
 					//Si un client possède deja un attribut fournit dans le formulaire de connexion

@@ -1,6 +1,8 @@
 package ITI.projet.mpb.controllers.sessions;
 
 import ITI.projet.mpb.controllers.app.GenericAppServlet;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -18,6 +20,7 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class ConnexionServlet extends GenericAppServlet {
+    private static final Logger LOGGER = LogManager.getLogger();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(req.getSession().getAttribute("user")==null) {
@@ -44,10 +47,12 @@ public class ConnexionServlet extends GenericAppServlet {
             {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", req.getParameter("pseudo"));
-                if (client.getidRole()==2){
+                if (client.getidRole()==1000){
                     session.setAttribute("admin",0);
+                    LOGGER.debug("Connexion d'un admin avec le pseudo:{}",client.getPseudo());
                     resp.sendRedirect("/admin/");
                 }else{
+                    LOGGER.debug("Connexion d'un utilisateur avec le pseudo:{}",client.getPseudo());
                     resp.sendRedirect("/app/");
                 }
 

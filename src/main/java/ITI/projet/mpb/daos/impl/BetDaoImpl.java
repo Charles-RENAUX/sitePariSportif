@@ -63,7 +63,6 @@ public class BetDaoImpl implements BetDao {
     public List<BetDto> listByFilter(String filter,String name,String tbname) {
         List<BetDto> result= new ArrayList<BetDto>();
         String sql="SELECT * FROM bets INNER JOIN odds ON bets.id_bet=odds.id_bet WHERE "+tbname+"."+filter+"="+str_query(name);
-        System.out.println(sql);
         try {
             DataSource dataSource = DataSourceProvider.getDataSource();
             try (Connection cnx = dataSource.getConnection();
@@ -84,7 +83,7 @@ public class BetDaoImpl implements BetDao {
     @Override
     public List<BetDto> listByPair(String sort, String filter,String name,String tbname1,String tbname2) {
         List<BetDto> result= new ArrayList<BetDto>();
-        String sql="SELECT * FROM bets INNER JOIN odds ON bets.id_bet=odds.id_bet WHERE "+tbname1+"."+filter+"="+str_query(name)+"ORDER BY "+tbname2+"."+sort;
+        String sql="SELECT * FROM bets INNER JOIN odds ON bets.id_bet=odds.id_bet WHERE "+tbname2+"."+filter+"="+str_query(name)+"ORDER BY "+tbname1+"."+sort;
         try {
             DataSource dataSource = DataSourceProvider.getDataSource();
             try (Connection cnx = dataSource.getConnection();
