@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+    <title>Formulaire Nouveau Mot de Passe</title>
+
+    <link rel="stylesheet"  href="css/appAdmin.css" >
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="../js/appAdmin.js" type="application/javascript"></script>
+</head>
+
+
+<body>
+     <nav  class="navbar navbar-inverse navbar-expand-md">
+        <div class="container" id="container-main">
+
+            <div class="navbar-header">
+                <img class="logo"
+                     src="img/logo.jpg">
+                <a class="navbar-brand" href="/index">
+                    monPetitBet</a>
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mpbNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </div>
+        <div class="collapse navbar-collapse" id="mpbNavBar">
+            <ul class="nav navbar-nav text-center">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bookmakers <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/bookmaker?name=betclic">Betclic</a></li>
+                        <li><a href="/bookmaker?name=winamax">Winamax</a></li>
+                        <li><a href="/bookmaker?name=unibet">Unibet</a></li>
+                        <li><a href="/bookmaker?name=barriere-bet">Barrière Bet</a></li>
+                        <li><a href="/bookmaker?name=parions-sport">Parions Sport</a></li>
+                        <li><a href="/bookmaker?name=bwin">Bwin</a></li>
+                        <li><a href="/bookmaker?name=zebet">Zebet</a></li>
+                        <li><a href="/bookmaker?name=pmu">PMU</a></li>
+                        <li><a href="/bookmaker?name=pokerstars">PokerStars</a></li>
+                        <li><a href="/bookmaker?name=france-pari">France-Pari</a></li>
+                        <li><a href="/bookmaker?name=vbet">Vbet</a></li>
+                        <li><a href="/bookmaker?name=netbet">Netbet</a></li>
+                        <li><a href="/bookmaker?name=genybet">Genybet</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Débutant <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/beginner?name=sports">Les Sports</a></li>
+                        <li><a href="/beginner?name=paris-sportifs">Les Paris Sportifs</a></li>
+                        <li><a href="/beginner?name=bookmakers">Un Bookmaker</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+<header>
+		<div id="menu-display">
+            <ul>
+			    <li><a href="/app/"></br><t>Mes Paris</br></br></br></t></a></li>
+            <li><a href="/app/editpwd" target="_Blank"><t>Editer mon mot de passe</br></br></br></t></a></li>
+            <li><a href="/disconnect"><t>Déconnexion</t></a></li>
+		</div>
+</ul>
+</header>
+		<section>
+			<div id="container_mdp">
+				<form method='post'>
+				<ul>
+					<li>
+                        <h3 th:if="${errorMsg!=null}" th:text="${errorMsg}" class="error"></h3>
+        <h3 th:if="${succesMsg!=null}" th:text="${succesMsg}" class="succes"></h3>
+						<label for='pass'><h4>Votre ancien mot de passe* :</h4></label><br/>
+						<input type='password' name='pass' id='mdp'/>
+					</li><br/>
+					<li>
+						<label for='NewPass'><h4>Votre nouveau mot de passe* :</h4></label><br/>
+						<input type='password' name='NewPass' id='mdp'/>
+					</li><br/>
+					<li>
+						<label for='NewPassVerif'><h4>Confirmez votre nouveau mot de passe* :</h4></label><br/>
+						<input type='password' name='NewPassVerif' />
+						
+					</li><br/>
+					<a href="confirmation.html" target="_blank"><input type="button" value="Valider"></a>
+				</ul>
+			</form>
+		</div>
+	</section>
+</html>

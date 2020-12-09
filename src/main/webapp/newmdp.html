@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+    <title>Formulaire Nouveau Mot de Passe</title>
+
+    <link rel="stylesheet"  href="css/app.css" >
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="../js/appAdmin.js" type="application/javascript"></script>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-inverse navbar-expand-lg navbar-custom">
+  <div class="container" id="container-main">
+      
+  <div class="navbar-header">
+     <img class="logo" src="img/home/logo.jpg" align="left"> <a class="navbar-brand" href="/index">  <text> monPetitBet</text>
+    
+      <style type="text/css">
+text {
+  color: darkgrey;
+  font-size: 20px;
+  text-align: center;
+}
+</style> 
+
+     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mpbNavBar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+   <div class="collapse navbar-collapse" id="mpbNavBar">
+    <ul class="nav navbar-nav text-center">
+      
+
+      
+      <li><a href="#">Contact</a></li>
+      
+    </ul>
+  </div>
+  </div>
+</nav>
+<header>
+		<div id="menu-display">
+            <ul>
+              <li><a href="App_Admin.html"><t></br>Gestion des Clients</br></t></a></li>
+			     <li><a href="MesParis-admin.html"></br><t>Gestion Paris</br></br></t></a></li>
+            <li><a href="formulaire-nouveau-mdp.html" target="_Blank"><t>Editer mon mot de passe</br></br></t></a></li>
+            <li><a href="#"><t>Déconnexion</t></a></li>
+		</div>
+</ul>
+</header>
+		<section>
+			<div id="container_mdp">
+				<form method='post'>
+				<ul>
+					<li>
+						<label for='pass'><h4>Votre ancien mot de passe* :</h4></label><br/>
+						<input type='password' name='pass' id='mdp'/>
+					</li><br/>
+					<li>
+						<label for='NewPass'><h4>Votre nouveau mot de passe* :</h4></label><br/>
+						<input type='password' name='NewPass' id='mdp'/>
+					</li><br/>
+					<li>
+						<label for='NewPassVerif'><h4>Confirmez votre nouveau mot de passe* :</h4></label><br/>
+						<input type='password' name='NewPassVerif' />
+						<h6>*ce formulaire ne sert qu'à changer de mot de passe,si vous avez oublié votre mot de passe merci de vous déconnecter et appuyer sur "mot de passe oublié""sur la page de connexion.</h6>
+					</li><br/>
+					<a href="confirmation.html" target="_blank"><input type="button" value="Valider"></a>
+				</ul>
+			</form>
+		</div>
+	</section>
+</html>
+

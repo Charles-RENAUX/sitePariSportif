@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/app/editpwd")
-public class EditPwdServlet extends GenericAppServlet {
+public class EditPwdUServlet extends GenericAppServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             WebContext context = new WebContext(req, resp, req.getServletContext());
