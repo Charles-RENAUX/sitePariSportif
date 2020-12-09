@@ -1,0 +1,16 @@
+insert into mpb.bookmakers (id_bookmaker, name)
+values  (0, 'test'),
+        (1, 'betclic'),
+        (2, 'winamax'),
+        (3, 'unibet'),
+        (4, 'parions-sport'),
+        (5, 'bwin'),
+        (6, 'zebet'),
+        (7, 'pmu'),
+        (8, 'pokerstars'),
+        (9, 'france-pari'),
+        (10, 'vbet'),
+        (11, 'netbet'),
+        (12, 'genybet'),
+        (13, 'barriere-bet'),
+        (14, 'test');

@@ -11,6 +11,7 @@ import java.io.IOException;
 
 @WebServlet("/admin/")
 public class UserManagerServlet extends GenericAdminServlet{
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());

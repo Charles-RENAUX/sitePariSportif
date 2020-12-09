@@ -16,14 +16,14 @@ public class BetController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Bet> listAll(){
+    public List<BetDto> listAll(){
         return BetService.getInstance().listAll();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sort")
-    public List<Bet> listBySort(
+    public List<BetDto> listBySort(
             @QueryParam("sort") String jsSort){
         return BetService.getInstance().listBySort(jsSort);
 
@@ -32,7 +32,7 @@ public class BetController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/filter")
-    public List<Bet> listByFilter(
+    public List<BetDto> listByFilter(
             @QueryParam("filter") String jsFilter,
             @QueryParam("name") String name){
         return BetService.getInstance().listByFilter(jsFilter, name);
@@ -42,7 +42,7 @@ public class BetController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/pair")
-    public List<Bet> listbyPair(
+    public List<BetDto> listbyPair(
             @QueryParam("sort") String jsSort,
             @QueryParam("filter") String jsFilter,
             @QueryParam("name") String name){
@@ -54,7 +54,7 @@ public class BetController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{idBet}")
-    public Bet getBet(@PathParam("idBet") Integer idBet){
+    public BetDto getBet(@PathParam("idBet") Integer idBet){
         return BetService.getInstance().getBet(idBet);
     }
 
@@ -87,7 +87,10 @@ public class BetController {
             return Response.status(Response.Status.OK).build();
         }catch (ClientNotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }catch (NullPointerException e){
             return Response.status(Response.Status.BAD_REQUEST).build();
         }catch (Exception e){
             e.printStackTrace();
@@ -95,15 +98,16 @@ public class BetController {
         }
     }
 
-    @Path("{idBet}")
+    @Path("/{idBet}")
     @DELETE
-    public Response deleteBet(@QueryParam("idBet") Integer idBet){
+    public Response deleteBet(@PathParam("idBet") Integer idBet){
         try {
             BetService.getInstance().deleteBet(idBet);
             return Response.status(Response.Status.OK).build();
         } catch (ClientNotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }catch (IllegalArgumentException e){
+            e.printStackTrace();
             return Response.status(Response.Status.BAD_REQUEST).build();
         }catch (Exception e){
             e.printStackTrace();

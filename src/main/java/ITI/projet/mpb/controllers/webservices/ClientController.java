@@ -8,21 +8,25 @@ import ITI.projet.mpb.pojos.ClientMdp;
 import ITI.projet.mpb.services.ClientService;
 import ITI.projet.mpb.services.MotDePasseServiceHash;
 
-import javax.management.RuntimeErrorException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 @Path("/clients")
 public class ClientController {
+    private static final Logger LOGGER= LogManager.getLogger();
 
     @Path("/all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Client> listAll() {
-        System.out.println("Hello");
-        return ClientService.getInstance().listAll();
+        List <Client> list = ClientService.getInstance().listAll();
+        LOGGER.debug("GET List<Client> /client/all 200 OK");
+        return list;
     }
 
 
@@ -30,7 +34,9 @@ public class ClientController {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Client> list(
             @QueryParam("sort") String jsSort) {
-        return ClientService.getInstance().list(jsSort);
+        List <Client> list =ClientService.getInstance().list(jsSort);
+        LOGGER.debug("GET List<Client> /client/sort?sort={} 200 OK",jsSort);
+        return list;
     }
 
 
@@ -40,28 +46,36 @@ public class ClientController {
     public List<Client> listByRole(
             @QueryParam("role") Integer role,
             @QueryParam("sort") String Jssort) {
-        return ClientService.getInstance().listByRole(role, Jssort);
+        List<Client> list = ClientService.getInstance().listByRole(role, Jssort);
+        LOGGER.debug("GET List<Client> /client/byrole?role={}&sort={} 200 OK",role,Jssort);
+        return list;
     }
 
     @Path("/pseudo/{pseudo}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Client getClientViaPseudo(@PathParam("pseudo") String pseudo) {
-        return ClientService.getInstance().getClientViaPseudo(pseudo);
+        Client client = ClientService.getInstance().getClientViaPseudo(pseudo);
+        LOGGER.debug("GET Client /client/pseudo/{} 200 OK",pseudo);
+        return client;
     }
 
     @Path("/email/{email}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Client getClientViaEmail(@PathParam("email") String email) {
-        return ClientService.getInstance().getClientViaEmail(email);
+        Client client= ClientService.getInstance().getClientViaEmail(email);
+        LOGGER.debug("GET Client /client/email/{} 200 OK",email);
+        return client;
     }
 
     @Path("/{idClient}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Client getClient(@PathParam("idClient") Integer idClient) {
-        return ClientService.getInstance().getClient(idClient);
+        Client client= ClientService.getInstance().getClient(idClient);
+        LOGGER.debug("GET Client /client/{} 200 OK",idClient);
+        return client;
     }
 
     @Path("/{idClient}")
@@ -69,12 +83,16 @@ public class ClientController {
     public Response deleteClient(@PathParam("idClient") Integer idClient) {
         try {
             ClientService.getInstance().deleteClient(idClient);
+            LOGGER.debug("DELETE /client/{} 200 OK",idClient);
             return Response.status(Response.Status.OK).build();
         } catch (ClientNotFoundException e) {
+            LOGGER.error("DELETE /client/{} 404 NOT FOUND",idClient);
             return Response.status(Response.Status.NOT_FOUND).build();
         }catch (IllegalArgumentException e){
+            LOGGER.error("DELETE /client/{} 400 BAD REQUEST",idClient);
             return Response.status(Response.Status.BAD_REQUEST).build();
         }catch (Exception e){
+            LOGGER.error("DELETE /client/{} 304 NOT MODIFIED",idClient);
             e.printStackTrace();
             return Response.status(Response.Status.NOT_MODIFIED).build();
         }
@@ -87,13 +105,17 @@ public class ClientController {
             String pwd = ClientService.getInstance().getDefaultPwd();
             Client clientToAdd = new Client(clientDto, pwd);
             ClientService.getInstance().addClient(clientToAdd);
+            LOGGER.debug("POST /client/add   pseudo={} 201 CREATED",clientDto.getPseudo());
             return Response.status(Response.Status.CREATED).build();
         } catch (ClientAlreadyException e) {
+            LOGGER.error("POST /client/add   pseudo={} 409 CONFLICT",clientDto.getPseudo());
             return Response.status(Response.Status.CONFLICT).build();
         }catch (IllegalArgumentException e){
+            LOGGER.error("POST /client/add   pseudo={} 400 BAD REQUEST ",clientDto.getPseudo());
             return Response.status(Response.Status.BAD_REQUEST).build();
         }catch (Exception e){
             e.printStackTrace();
+            LOGGER.error("POST /client/add   pseudo={} 304 NOT MODIFIED ",clientDto.getPseudo());
             return Response.status(Response.Status.NOT_MODIFIED).build();
         }
     }
@@ -120,36 +142,44 @@ public class ClientController {
             //Appelez le service pour éditer le client
 
         }catch (ClientNotFoundException e){
+            LOGGER.error("PATCH /client   pseudo={} 404 NOT FOUND ",clientDto.getPseudo());
             return Response.status(Response.Status.NOT_FOUND).build();
         }catch (ClientAlreadyException e){
+            LOGGER.error("PATCH /client   pseudo={} 409 CONFLICT ",clientDto.getPseudo());
             return Response.status(Response.Status.CONFLICT).build();
         }
         catch (IllegalArgumentException e){
+            LOGGER.error("PATCH /client   pseudo={} 400 BAD REQUEST ",clientDto.getPseudo());
             return Response.status(Response.Status.BAD_REQUEST).build();
         }catch (Exception e){
             e.printStackTrace();
+            LOGGER.error("PATCH /client   pseudo={} 304 NOT MODIFIED ",clientDto.getPseudo());
             return Response.status(Response.Status.NOT_MODIFIED).build();
         }
     }
+
+    //Uniquement pour les ADMINS
     @Path("/editpwd")
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     public Response editPwd(ClientMdp clientMdp){
         if (!clientMdp.getPwd1().equals(clientMdp.getPwd2())){
-           return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+            LOGGER.error("PATCH /client/editpwd   pseudo={} 400 BAD REQUEST ",clientMdp.getPseudo());
+           return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        Client clientcheck=ClientService.getInstance().getClient(clientMdp.getId());
-        if (clientcheck==null){
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        if(!MotDePasseServiceHash.validerMotDePasse(clientMdp.getOldPwd(),clientcheck.getMotDePasse())){
-            return Response.status(Response.Status.CONFLICT).build();
-        }
-        else {
+        try{
+            Client clientcheck=ClientService.getInstance().getClientViaPseudo(clientMdp.getPseudo());
+            if (clientcheck==null){
+                LOGGER.error("PATCH /client/editpwd   pseudo={} 404 NOT FOUND ",clientMdp.getPseudo());
+                return Response.status(Response.Status.NOT_FOUND).build();
+            }
             clientcheck.setMotDePasse(MotDePasseServiceHash.genererMotDePasse(clientMdp.getPwd1()));
             ClientService.getInstance().editClient(clientcheck);
+            LOGGER.debug("PATCH /client/editpwd   pseudo={} 201 ACCEPTED ",clientMdp.getPseudo());
             return Response.status(Response.Status.ACCEPTED).build();
+        }catch (Exception e){
+            LOGGER.error("PATCH /client/editpwd   pseudo={} 304 NOT MODIFIED ",clientMdp.getPseudo());
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
     }
-
 }

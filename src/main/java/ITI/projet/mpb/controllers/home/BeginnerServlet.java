@@ -18,22 +18,23 @@ public class BeginnerServlet extends GenericHomeServlet {
         String nameBeginner=req.getParameter("name");
         try {
             List<String> resMap= HomeService.getInstance().getBeginnerName(nameBeginner);
-            String resName=resMap.get(0);
+            if (resMap.size()==0) {
+                resp.sendRedirect("/404");}
+            else{
+                String resName=resMap.get(0);
             Integer resInt=Integer.parseInt(resMap.get(1));
             String resTitle=resMap.get(2);
-            if ("".equals(resName)) {
-                resp.sendRedirect("/404");}
-            else {
-                WebContext context = new WebContext(req, resp, req.getServletContext());
-                context.setVariable("name", resName);
-                context.setVariable("img",resInt);
-                context.setVariable("title",resTitle);
-                TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
-                templateEngine.process("beginner", context, resp.getWriter());
-            }
+                if ("".equals(resName)) {
+                    resp.sendRedirect("/404");}
+                else {
+                    WebContext context = new WebContext(req, resp, req.getServletContext());
+                    context.setVariable("name", resName);
+                    context.setVariable("img",resInt);
+                    context.setVariable("title",resTitle);
+                    TemplateEngine templateEngine = createTemplateEngine(req.getServletContext());
+                    templateEngine.process("beginner", context, resp.getWriter());
+            }}
         } catch (IllegalArgumentException iae) {
-
-            System.out.println(iae.getMessage());
             resp.sendRedirect("/405");
         }
     }

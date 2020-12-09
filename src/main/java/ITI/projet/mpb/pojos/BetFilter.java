@@ -1,16 +1,19 @@
 package ITI.projet.mpb.pojos;
 
 public enum BetFilter {
-    MARKET("MARKET","market"),
-    LEAGUE("LEAGUE","league"),
-    TEAM("TEAM","team");
+    MARKET("MARKET","market","odds"),
+    LEAGUE("LEAGUE","league","bets"),
+    TEAM("TEAM","team","bets");
 
     private String jsFilter;
     private String filter;
+    private String tbName;
 
-    BetFilter(String jsSort,String dbSort){
+
+    BetFilter(String jsFilter,String dbSort,String tbName){
         this.jsFilter =jsFilter;
         this.filter =dbSort;
+        this.tbName=tbName;
     }
 
     public String getFilter() {
@@ -19,6 +22,19 @@ public enum BetFilter {
 
     public String getJsFilter() {
         return jsFilter;
+    }
+
+    public String getTbName() {
+        return tbName;
+    }
+
+    public static String getTbName(String filter) {
+        for (BetFilter BetFilter : BetFilter.values()){
+            if(BetFilter.filter.equals(filter)){
+                return BetFilter.tbName;
+            }
+        }
+        throw new IllegalArgumentException(String.format("The JS Sortable  %s has no equivalent",filter));
     }
 
     public static String getComparator(String jsFilter) {

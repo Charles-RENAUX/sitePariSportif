@@ -3,31 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Register - MPB</title>
-    <link href="css/register.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/home.css" rel="stylesheet" type="text/css">
+    <link href="css/reg.css" rel="stylesheet" type="text/css">
 </head>
 
-
 <body>
-	<section id="main">
+<nav th:insert="~{base ::menu}" class="navbar navbar-inverse navbar-expand-md"></nav>
 
-		<h1>Inscription</h1>
+<!--- Header Commun à créer dans Base et insérer ici --->
+
+<header th:replace="~{base ::headercommon('Inscription')}" class="art1"></header>
+
+    <div class="container">
         <h3 th:if="${errorMsg!=null}" th:text="${errorMsg}" class="error"></h3>
 		<form method="POST" action="register">
 		<h3 class="register">Prénom</h3>
-        <input class="boite" type="text" name="prenom" /><br />
-            <h3 class="register">Nom</h3>
-        <input class="boite" type="text" name="nom" /><br />
-            <h3 class="register">Email</h3>
-        <input class="boite" type="text" name="email" /><br />
-            <h3 class="register">Pseudo</h3>
-        <input class="boite" type="text" name="pseudo" /><br />
-            <h3 class="register">Mot de passe</h3>
-        <input class="boite" type="password" name="mdp" /><br />
-            <h3 class="register">Confirmation du mot de passe</h3>
-        <input class="boite" type="password" name="mdp2" /><br />
-        <input id="connexion" type="submit" value="Inscription"/>
+        <p><input class="boite" type="text" name="prenom"></p>
+        <h3 class="register">Nom</h3>
+        <p><input class="boite" type="text" name="nom"></p>
+        <p><h3 class="register">Email</h3>
+        <p><input class="boite" type="text" name="email"></p>
+        <h3 class="register">Pseudo</h3>
+        <p><input class="boite" type="text" name="pseudo"></p>
+        <h3 class="register">Mot de passe</h3>
+        <p><input class="boite" type="password" name="mdp"></p>
+        <h3 class="register">Confirmation du mot de passe</h3>
+        <p><input class="boite" type="password" name="mdp2" ></p>
+        <p></p>
+        <p><input id="connexion" type="submit" value="Inscription"></p>
         </form>
-	</section>
+
 	
 	<div>
 		<a href="connect">Déjà inscrit ? Cliquez ici</a>
@@ -36,6 +44,8 @@
 	<div class="retour">
 		<a class="retour" href="index"> &#8592 Retour à la page d'accueil </a>
 	</div>
+
+    </div>
 </body>
 
 </html>

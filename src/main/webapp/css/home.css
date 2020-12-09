@@ -227,24 +227,6 @@ section {
     display: block;
 }
 
-.card-header:first-child {
-    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
-}
-.card-header:first-child {
-    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
-}
-.card-header {
-    padding: .75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: rgba(0,0,0,.03);
-    border-bottom: 1px solid rgba(0,0,0,.125);
-}
-.card-header {
-    padding: .75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: rgba(0,0,0,0.03);
-    border-bottom: 1px solid rgba(0,0,0,0.125);
-}
 *, ::before, ::after {
     margin: 0;
     padding: 0;
@@ -260,12 +242,7 @@ user agent stylesheet
 div {
     display: block;
 }
-.card-header-tabs {
-    margin-right: -.625rem;
-    margin-bottom: -.75rem;
-    margin-left: -.625rem;
-    border-bottom: 0;
-}
+
 
 .nav-tabs {
     border-bottom: 1px solid #dee2e6;
@@ -279,13 +256,7 @@ div {
     margin-bottom: 0;
     list-style: none;
 }
-.card-header-tabs {
-    margin-right: -.625rem;
-    margin-bottom: -.75rem;
-    margin-left: -.625rem;
-    border-bottom: 0;
-    decoration:none;
-}
+
 .nav-tabs {
     border-bottom: 1px solid #dee2e6;;
 }
@@ -463,8 +434,10 @@ a:link
 } 
 
 /*Partie Jules*/
-
-
+.index a{
+    font-size:120%;
+    color:red;
+}
 
 
 
@@ -531,8 +504,8 @@ header.art0{
 
 .basicd p{
 	font-size:60%;
-	line-height: 1.5em;
-	padding: 1em 0 0;
+	line-height: 1em;
+	padding: 0.7em 0 0;
 }
 
 .basicd p.sub{

@@ -23,15 +23,4 @@ public class MotDePasseServiceHash
 	    public static boolean validerMotDePasse(String motDePasse, String hashCorrect) {
 	        return instancierArgon2().verify(hashCorrect, motDePasse);
 	    }
-
-	    public static void main(String[] args) {
-	        System.out.println(String.format("Le mot de passe chiffré de user1 est : %s",
-	                MotDePasseServiceHash.genererMotDePasse("mdp1")));
-	        System.out.println(String.format("Le mot de passe chiffré de user2 est : %s",
-	                MotDePasseServiceHash.genererMotDePasse("mdp2")));
-	        System.out.println(String.format("Le mot de passe chiffré de user3 est : %s",
-	                MotDePasseServiceHash.genererMotDePasse("mdp3")));
-			System.out.println(String.format("Le mot de passe chiffré de user4 est : %s",
-					MotDePasseServiceHash.genererMotDePasse("mdp4")));
-	    }
 }

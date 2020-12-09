@@ -1,7 +1,11 @@
 package ITI.projet.mpb.pojos;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 public class Bet {
 
@@ -37,7 +41,7 @@ public class Bet {
         this.id= betDto.getId();
         this.idLeague= betDto.getIdLeague();
         this.league= betDto.getLeague();
-        this.dateMatch=getDate(betDto.getDate_match());
+        this.dateMatch=str_to_date(betDto.getDateMatch());
         this.teamH= betDto.getTeamH();
         this.teamA=betDto.getTeamA();
         this.market= betDto.getMarket();
@@ -45,7 +49,7 @@ public class Bet {
         this.odd1=betDto.getOdd1();
         this.odd2=betDto.getOdd2();
         this.odd3=betDto.getOdd3();
-        this.dateOdd=getDate(betDto.getDate_odd());
+        this.dateOdd=str_to_date(betDto.getDateOdd());
     }
 
 
@@ -145,11 +149,28 @@ public class Bet {
         this.idLeague = idLeague;
     }
 
-    public LocalDateTime getDate(String date){
+    //Méthodes Dates
+
+    public LocalDateTime str_to_date(String date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
         return dateTime;
     }
+
+    public LocalDateTime ts_to_date(Long timestamp){
+        //Correction pour éviter une heure de décalage
+        timestamp-=3600;
+        LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp), ZoneId.of("Europe/Paris"));
+
+        return date;
+    }
+
+    public Long date_to_ts(LocalDateTime date){
+        return TimeUnit.MILLISECONDS.
+                toSeconds(Timestamp.valueOf(date).getTime())+3600;
+    }
+
+
 
     @Override
     public String toString() {

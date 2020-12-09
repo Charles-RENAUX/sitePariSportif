@@ -1,9 +1,0 @@
-FROM tomcat
-
-RUN adduser -D tomcat; chown -R tomcat:tomcat /usr/local/tomcat
-
-USER tomcat
-
-COPY ./webapp /usr/local/tomcat/webapps/webapp
-
-CMD ["catalina.sh", "run"]

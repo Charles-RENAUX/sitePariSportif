@@ -43,7 +43,6 @@ public class ClientDaoImpl implements ClientDao
 			DataSource dataSource = DataSourceProvider.getDataSource();
 			try (Connection cnx = dataSource.getConnection();
 				 PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
-				System.out.println(dbSort);
 				try(ResultSet resultSet = preparedStatement.executeQuery()) {
 					while(resultSet.next()) {
 						result.add(createClientFromResultSet(resultSet));
@@ -80,7 +79,6 @@ public class ClientDaoImpl implements ClientDao
 	
 	private Client createClientFromResultSet(ResultSet resultSet) throws SQLException
 	{
-		System.out.println(resultSet.getString("pseudo"));
 		return new Client(
 				resultSet.getInt("id_client"),
 				resultSet.getString("nom"),
@@ -204,12 +202,12 @@ public class ClientDaoImpl implements ClientDao
 				preparedStatement.executeUpdate();
 				ResultSet ids = preparedStatement.getGeneratedKeys();
 				if (ids.next()) {
+				}else{
+					throw new ClientNotFoundException("The client doesn't exist");
 				}
 			}
-		}catch (SQLException e){
+		}catch (SQLException e) {
 			e.printStackTrace();
-		}catch (NullPointerException e){
-			throw new ClientNotFoundException("The client doesn't exist");
 		}
 	}
 

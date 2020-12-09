@@ -39,7 +39,6 @@ public class ConnexionServlet extends GenericAppServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Session de l'utilisateur
     	try{
-            System.out.println("ok");
             Client client = ClientService.getInstance().getClientViaPseudo(req.getParameter("pseudo"));
             if(MotDePasseServiceHash.validerMotDePasse(req.getParameter("mdp"), client.getMotDePasse() ))
             {

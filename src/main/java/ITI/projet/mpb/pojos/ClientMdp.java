@@ -5,37 +5,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ClientMdp {
 
-    private Integer id;
-    private String oldPwd;
+    private String pseudo;
     private String pwd1;
     private String pwd2;
 
     @JsonCreator
-    public ClientMdp(@JsonProperty(value="id",required = true)Integer id,
-                     @JsonProperty(value="oldpwd",required = true)String oldPwd,
+    public ClientMdp(@JsonProperty(value="pseudo",required = true)String pseudo,
                      @JsonProperty(value="pwd1",required = true)String pwd1,
                      @JsonProperty(value="pwd2",required = true)String pwd2){
-        this.id=id;
-        this.oldPwd=oldPwd;
+        this.pseudo=pseudo;
         this.pwd1=pwd1;
         this.pwd2=pwd2;
 
     }
 
-    public Integer getId() {
-        return id;
+    public String getPseudo() {
+        return pseudo;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getOldPwd() {
-        return oldPwd;
-    }
-
-    public void setOldPwd(String oldPwd) {
-        this.oldPwd = oldPwd;
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 
     public String getPwd1() {
@@ -57,8 +46,7 @@ public class ClientMdp {
     @Override
     public String toString() {
         return "ClientMdp{" +
-                "id=" + id +
-                ", oldPwd='" + oldPwd + '\'' +
+                "pseudo='" + pseudo + '\'' +
                 ", pwd1='" + pwd1 + '\'' +
                 ", pwd2='" + pwd2 + '\'' +
                 '}';
