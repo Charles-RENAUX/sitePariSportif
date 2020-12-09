@@ -67,7 +67,8 @@ let deleteBet = function (bet) {
 
 let createBet = function (bet) {
     let saveRequest = new XMLHttpRequest();
-    saveRequest.open("POST", "/bet", true); // a modif
+    let url=BASEURL+"api/bets/add";
+    saveRequest.open("POST", url, true); // a modif
 
     saveRequest.onload = function () {
         if (this.status === 201) {
@@ -88,7 +89,8 @@ let createBet = function (bet) {
 
 let updateBet = function (bet) {
     let saveRequest = new XMLHttpRequest();
-    saveRequest.open("PATCH", "/bet/" + bet.id, true);
+    let url=BASEURL+"api/bets/edit";
+    saveRequest.open("PATCH", url, true);
 
     saveRequest.onload = function () {
         if (this.status === 204) {
@@ -140,7 +142,7 @@ let buildTableLine = function (bet) {
         showButton.title = "Modify";//titre du bouton
         showButton.onclick = function () 
         {
-            showBet(bet); // on appel la fonction showClient pour modifier la ligne
+            showBet(bet,1); // on appel la fonction showClient pour modifier la ligne
         };
     buttonGroupElement.appendChild(showButton);
     // Appendchild du bouton dans Tr
@@ -169,10 +171,12 @@ let createTableCell = function (text, header = false) {
     return cellElement;
 };
 
-let formMode;
-let showBet = function (bet) {
-    formMode = bet.id ? UPDATE : CREATION;
+var BOOL;
 
+let showBet = function (bet,bool) {
+    BOOL=bool;
+    document.getElementById("list").hidden = true;
+    document.getElementById("form").hidden = false;
     document.getElementById("id-input").value = bet.id;
     document.getElementById("id-input").disabled = !!bet.id;
     document.getElementById("market-input").value = bet.market;
@@ -185,8 +189,8 @@ let showBet = function (bet) {
     document.getElementById("odd3-input").value = bet.odd3;
     document.getElementById("dateOdd-input").value = bet.dateOdd
 
-    document.getElementById("list").hidden = true;
-    document.getElementById("form").hidden = false;
+
+
 };
 
 let saveForm = function () {
@@ -203,7 +207,7 @@ let saveForm = function () {
         dateOdd: document.getElementById("dateOdd-input").value
     };
 
-    if (formMode === CREATION) {
+    if (BOOL === 0) {
         createBet(bet);
     } else {
         updateBet(bet);
@@ -225,7 +229,7 @@ window.onload = function () {
     }
 
     document.getElementById("add-button").onclick = function () {
-        showBet({id: "", idLeague: "", League: "", DateMatch: "",Home:"",Away:"",DateOdd:"",Market:"",MarketB:"",Odd1:"",Odd2:"",Odd3:""});
+        showBet({id: "", idLeague: "", League: "", DateMatch: "",Home:"",Away:"",DateOdd:"",Market:"",MarketB:"",Odd1:"",Odd2:"",Odd3:""},0);
     };
 
     document.getElementById("go-back").onclick = function () {
