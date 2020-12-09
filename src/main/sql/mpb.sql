@@ -26,15 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `affiliation`
 --
-
-CREATE TABLE `affiliation` (
-  `id` int(11) NOT NULL,
-  `domaine` varchar(50) NOT NULL,
-  `lien` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `beginners`
 --
@@ -48,11 +39,6 @@ CREATE TABLE `beginners` (
 -- Dumping data for table `beginners`
 --
 
-INSERT INTO `beginners` (`id_beginner`, `name`) VALUES
-(1, 'sports'),
-(2, 'paris-sportifs'),
-(3, 'bookmakers'),
-(150, 'test');
 
 -- --------------------------------------------------------
 
@@ -68,21 +54,6 @@ CREATE TABLE `bookmakers` (
 --
 -- Dumping data for table `bookmakers`
 --
-
-INSERT INTO `bookmakers` (`id_bookmaker`, `name`) VALUES
-(1, 'betclic'),
-(2, 'winamax'),
-(3, 'unibet'),
-(4, 'parions-sport'),
-(5, 'bwin'),
-(6, 'zebet'),
-(7, 'pmu'),
-(8, 'pokerstars'),
-(9, 'france-paris'),
-(10, 'vbet'),
-(11, 'netbet'),
-(12, 'genybet'),
-(150, 'test');
 
 -- --------------------------------------------------------
 
@@ -104,14 +75,6 @@ CREATE TABLE `clients` (
 
 --
 -- Table structure for table `clientSiteParrain`
---
-
-CREATE TABLE `clientSiteParrain` (
-  `id_Client` int(11) NOT NULL,
-  `id_Site` int(11) NOT NULL,
-  `code_P` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 -- --------------------------------------------------------
 
 --
