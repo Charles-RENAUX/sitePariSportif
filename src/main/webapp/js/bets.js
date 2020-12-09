@@ -75,10 +75,12 @@ let createBet = function (bet) {
             listBet();
             document.getElementById("form").hidden = true;
             document.getElementById("list").hidden = false;
-        } else if (this.status === 204) {
-            alert("The bet creation should return a CREATED response status!");
         } else if (this.status === 409) {
             alert("The bet code already exists!");
+        }else if (this.status === 400){
+            alert("Your request is incorrect");
+        }else{
+            "There an unknown error, NOT modified"
         }
     };
     saveRequest.setRequestHeader("content-type", "application/json");
@@ -93,16 +95,20 @@ let updateBet = function (bet) {
     saveRequest.open("PATCH", url, true);
 
     saveRequest.onload = function () {
-        if (this.status === 204) {
+        if (this.status === 200) {
             listBet();
             document.getElementById("form").hidden = true;
             document.getElementById("list").hidden = false;
         } else if (this.status === 404) {
-            alert("The updated bet does not exist!");
+            alert("The Bet to edit doesn't exist");
+        } else if (this.status === 400){
+            alert("Your request is incorrect");
+        } else{
+            "There an unknown error, NOT modified"
         }
     };
-    saveRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    saveRequest.send("id=" + bet.id + "&market=" + bet.market + "&marketB=" + bet.marketB+ "&league=" + bet.league + "&odd1=" + bet.odd1 + "&odd2=" + bet.odd2 + "&odd3=" + bet.odd3);
+    saveRequest.setRequestHeader("content-type", "application/json");
+    saveRequest.send(JSON.stringify(bet));
 };
 
 // 2 - Functions JS
@@ -142,7 +148,7 @@ let buildTableLine = function (bet) {
         showButton.title = "Modify";//titre du bouton
         showButton.onclick = function () 
         {
-            showBet(bet,1); // on appel la fonction showClient pour modifier la ligne
+            showBet1(bet); // on appel la fonction showClient pour modifier la ligne
         };
     buttonGroupElement.appendChild(showButton);
     // Appendchild du bouton dans Tr
@@ -173,34 +179,55 @@ let createTableCell = function (text, header = false) {
 
 var BOOL;
 
-let showBet = function (bet,bool) {
-    BOOL=bool;
+let showBet1 = function (bet) {
+    BOOL=1;
     document.getElementById("list").hidden = true;
     document.getElementById("form").hidden = false;
     document.getElementById("id-input").value = bet.id;
     document.getElementById("id-input").disabled = !!bet.id;
-    document.getElementById("market-input").value = bet.market;
-    document.getElementById("marketB-input").value = bet.marketB;
+    document.getElementById("idLeague-input").value = bet.idLeague;
+    document.getElementById("dateMatch-input").value = bet.dateMatch;
     document.getElementById("league-input").value = bet.league;
     document.getElementById("teamH-input").value = bet.teamH;
     document.getElementById("teamA-input").value = bet.teamA;
+    document.getElementById("market-input").value = bet.market;
+    document.getElementById("marketB-input").value = bet.marketB;
     document.getElementById("odd1-input").value = bet.odd1;
     document.getElementById("odd2-input").value = bet.odd2;
     document.getElementById("odd3-input").value = bet.odd3;
     document.getElementById("dateOdd-input").value = bet.dateOdd
 
+};
 
-
+let showBet2 = function (bet) {
+    BOOL=0;
+    document.getElementById("list").hidden = true;
+    document.getElementById("form").hidden = false;
+    document.getElementById("id-input").value = 1;
+    document.getElementById("id-input").disabled = !!1;
+    document.getElementById("idLeague-input").value = null;
+    document.getElementById("dateMatch-input").value = null;
+    document.getElementById("league-input").value = null;
+    document.getElementById("teamH-input").value = null;
+    document.getElementById("teamA-input").value = null;
+    document.getElementById("market-input").value = null;
+    document.getElementById("marketB-input").value = null;
+    document.getElementById("odd1-input").value =null;
+    document.getElementById("odd2-input").value = null;
+    document.getElementById("odd3-input").value = null;
+    document.getElementById("dateOdd-input").value =null;
 };
 
 let saveForm = function () {
     let bet= {
         id: document.getElementById("id-input").value,
-        market: document.getElementById("market-input").value,
-        marketB: document.getElementById("marketB-input").value,
+        idLeague: document.getElementById("idLeague-input").value,
         league: document.getElementById("league-input").value,
+        dateMatch: document.getElementById("dateMatch-input").value,
         teamH: document.getElementById("teamH-input").value,
         teamA: document.getElementById("teamA-input").value,
+        market: document.getElementById("market-input").value,
+        marketB: document.getElementById("marketB-input").value,
         odd1: document.getElementById("odd1-input").value,
         odd2: document.getElementById("odd2-input").value,
         odd3: document.getElementById("odd3-input").value,
@@ -229,7 +256,7 @@ window.onload = function () {
     }
 
     document.getElementById("add-button").onclick = function () {
-        showBet({id: "", idLeague: "", League: "", DateMatch: "",Home:"",Away:"",DateOdd:"",Market:"",MarketB:"",Odd1:"",Odd2:"",Odd3:""},0);
+        showBet2({id: "", idLeague: "", League: "", DateMatch: "",Home:"",Away:"",DateOdd:"",Market:"",MarketB:"",Odd1:"",Odd2:"",Odd3:""},0);
     };
 
     document.getElementById("go-back").onclick = function () {
