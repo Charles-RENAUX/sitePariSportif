@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+    <title>Administration</title>
+
+    <link rel="stylesheet"  href="css/appAdmin.css" >
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="../js/appAdmin.js" type="application/javascript"></script>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-inverse navbar-expand-lg navbar-custom">
+  <div class="container" id="container-main">
+      
+  <div class="navbar-header">
+     <img class="logo" src="img/logo.jpg" align="left"> <a class="navbar-brand" href="/index">  <text> monPetitBet</text>
+    
+      <style type="text/css">
+text {
+  color: darkgrey;
+  font-size: 20px;
+  text-align: center;
+}
+</style> 
+
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mpbNavBar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+   <div class="collapse navbar-collapse" id="mpbNavBar">
+    <ul class="nav navbar-nav text-center">
+      
+
+      
+      <li><a href="#">Contact</a></li>
+      
+    </ul>
+  </div>
+  </div>
+</nav>
+<header>
+		<div id="menu-display">
+            <ul>
+			<li><a href="App_Admin.html"><t></br>Gestion des Clients</br></br></br></t></a></li>
+			<li><a href="MesParis-admin.html"><t>Gestion Paris</br></br></br></t></a></li>
+            <li><a href="formulaire-nouveau-mdp.html" target="_Blank"><t>Editer mon mot de passe</br></br></br></t></a></li>
+            <li><a href="#"><t>Déconnexion</t></a></li>
+		</div>
+</ul>
+</header>
+
+
+
+<div id="container_list">
+    <h1 class="display-1">Liste Clients</h1>
+    
+        <table class="table table-striped table-hover" id="clients-list">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Mot de passe</th>
+                    <th scope="col">Solde</th>
+                    <th scope="col">Role</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    
+
+    <section id="form">
+        <h2>&thinsp;&thinsp;Detail du client</h2>
+        <form>
+            <div class="form-group">
+                <label for="code-input">&thinsp;&thinsp;Id</label>
+                <input type="text" class="form-control w-25" id="id">
+            </div>
+            <div class="form-group">
+                <label for="nom-input"> &thinsp;&thinsp;Nom </label>
+                <input type="form-control" class="form-control w-25" id="nom-input">
+            </div>
+            <div class="form-group">
+                <label for="prenom-input">&thinsp;&thinsp;Prénom</label>
+                <input type="text" class="form-control" id="prenom-input">
+            </div>
+            <div class="form-group">
+                <label for="email-input">&thinsp;&thinsp; Email </label>
+                <input type="text" class="form-control" id="email-input">
+            </div>
+            <div class="form-group">
+                <label for="pseudo-input">&thinsp; &thinsp;Pseudo </label>
+                <input type="text" class="form-control" id="pseudo-input">
+            </div>
+            <div class="form-group">
+                <label for="solde-input">&thinsp;&thinsp; Solde </label>
+                <input type="text" class="form-control w-25" id="solde-input">
+            </div>
+            <div class="form-group">
+                <label for="role-input">&thinsp;&thinsp;Role</label>
+                <FORM>
+                    <SELECT name="nom" size="1">
+                    <OPTION selected>1
+                    <OPTION >2
+                </SELECT>
+            </FORM>
+            </div>
+            <button type="button" class="btn btn-secondary" id="go-back">Go back to the list</button>
+            <button type="submit" class="btn btn-primary" id="save-form">Sauvegarder</button>
+        </form>
+    </section>
+</div>
+
+</body>
+</html>

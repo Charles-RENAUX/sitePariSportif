@@ -1,0 +1,22 @@
+version : 1.0
+services:
+  db:
+    image:
+    container_name: mpb_db
+    volumes:
+      - /opt/test:/var/lib/mysql
+      - ./mysql-dump:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb1
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: root
+    ports:
+      - '9001:3306'
+web:
+  depends_on:
+    - db
+  image: mpbTomcat
+  container_name: mpb_tomcat
+  ports:
+    - '9000:8080'
