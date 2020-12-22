@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Ici on met les articles des bookmakers -->
+
+
+<div th:fragment="betclic">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book2" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus2" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain2" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book2" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: betclic}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus2" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: betclic}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain2" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: betclic}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="winamax">
+
+    <section class="py-5">
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#Book1" data-toggle="tab"><h4>Présentation</h4></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Bonus1" data-toggle="tab"><h4>Bonus</h4></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Parrain1" data-toggle="tab"><h4>Parrainage</h4></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content mt-3">
+
+                        <div class="tab-pane active" id="Book1" role="tabpanel">
+                            <p class="card-text"> </p>
+                            <div th:replace="~{fragments/pres :: winamax}" class="card-body">
+                        </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="Bonus1" role="tabpanel">
+                            <p class="card-text">
+                            </p>
+                            <div th:replace="~{fragments/bonus :: winamax}" class="card-body">
+
+                        </div>
+                        </div>
+
+                        <div class="tab-pane" id="Parrain1" role="tabpanel">
+                            <p class="card-text">
+                            </p>
+                            <div th:replace="~{fragments/parrain :: winamax}" class="card-body">
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <br>
+
+</div>
+
+
+<div th:fragment="unibet">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book3" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus3" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain3" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book3" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: unibet}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus3" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: unibet}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain3" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: unibet}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="parions-sport">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book4" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus4" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain4" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book4" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: parions-sport}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus4" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: parions-sport}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain4" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: parions-sport}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="bwin">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book5" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus5" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain5" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book5" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: bwin}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus5" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: bwin}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain5" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: bwin}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="zebet">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book6" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus6" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain6" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book6" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: zebet}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus6" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: zebet}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain6" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: zebet}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="pmu">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book7" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus7" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain7" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book7" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: pmu}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus7" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: pmu}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain7" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: pmu}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="pokerstars">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book8" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus8" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain8" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book8" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: pokerstars}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus8" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: pokerstars}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain8" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: pokerstars}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="france-pari">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book9" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus9" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain9" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book9" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: france-pari}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus9" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: france-pari}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain9" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: france-pari}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="vbet">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book10" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus10" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain10" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book10" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: vbet}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus10" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: vbet}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain10" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: vbet}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="netbet">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book11" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus11" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain11" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book11" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: netbet}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus11" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: netbet}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain11" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: netbet}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="genybet">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book12" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus12" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain12" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book12" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: genybet}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus12" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: genybet}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain12" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: genybet}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div th:fragment="barriere-bet">
+
+    <section class="py-5">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs bologna-list" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Book13" data-toggle="tab"><h4>Bookmaker</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Bonus13" data-toggle="tab"><h4>Bonus</h4></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Parrain13" data-toggle="tab"><h4>Parrain</h4></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content mt-3">
+
+                    <div class="tab-pane active" id="Book13" role="tabpanel">
+                        <p class="card-text"></p>
+                        <div th:replace="~{fragments/pres :: barriere-bet}" class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Bonus13" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/bonus :: barriere-bet}" class="card-body">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="Parrain13" role="tabpanel">
+                        <p class="card-text">
+                        </p>
+                        <div th:replace="~{fragments/parrain :: barriere-bet}" class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>
+
+
+
+
+</html>

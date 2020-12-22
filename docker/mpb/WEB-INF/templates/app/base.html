@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+ <nav th:fragment="menu">
+        <div class="container" id="container-main">
+
+            <div class="navbar-header">
+                <img class="logo"
+                     src="img/home/logo.jpg">
+                <a class="navbar-brand" href="/index">
+                    monPetitBet</a>
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mpbNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+        <div class="collapse navbar-collapse" id="mpbNavBar">
+            <ul class="nav navbar-nav text-center">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bookmakers <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/bookmaker?name=betclic">Betclic</a></li>
+                        <li><a href="/bookmaker?name=winamax">Winamax</a></li>
+                        <li><a href="/bookmaker?name=unibet">Unibet</a></li>
+                        <li><a href="/bookmaker?name=barriere-bet">Barrière Bet</a></li>
+                        <li><a href="/bookmaker?name=parions-sport">Parions Sport</a></li>
+                        <li><a href="/bookmaker?name=bwin">Bwin</a></li>
+                        <li><a href="/bookmaker?name=zebet">Zebet</a></li>
+                        <li><a href="/bookmaker?name=pmu">PMU</a></li>
+                        <li><a href="/bookmaker?name=pokerstars">PokerStars</a></li>
+                        <li><a href="/bookmaker?name=france-pari">France-Pari</a></li>
+                        <li><a href="/bookmaker?name=vbet">Vbet</a></li>
+                        <li><a href="/bookmaker?name=netbet">Netbet</a></li>
+                        <li><a href="/bookmaker?name=genybet">Genybet</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Débutant <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/beginner?name=sports">Les Sports</a></li>
+                        <li><a href="/beginner?name=paris-sportifs">Les Paris Sportifs</a></li>
+                        <li><a href="/beginner?name=bookmakers">Un Bookmaker</a></li>
+                    </ul>
+                </li>
+                <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+</div>
+
+    <header th:fragment="headerindex" >
+        <div class="container text-center">
+            <h1>Bienvenue sur monPetitBet</h1>
+            <p class="lead">La crème du Betting</p>
+        </div>
+    </header>
+
+ <header th:fragment=="headercommon(title)" class="art1">
+     <div class="container text-center">
+         <h1 th:text="${title}">Titre de niveau 1</h1>
+     </div>
+ </header>
+
+
+
+
+
+ <div th:fragment="aside">
+     <h2 class="text-center">Les Meilleurs Bookmakers</h2>
+     <br>
+     <p class="text-center"><img src="../img/home/winamax.png"width="375"></p>
+     <br>
+     <p class="text-center"><img src="../img/home/betclic.png"width="375"></p>
+     <br>
+     <p class="text-center"><img src="../img/home/pmu.png"width="375"></p>
+     <br>
+     <p class="text-center"><img src="../img/home/unibet.png"width="375"></p>
+     <br>
+     <p class="text-center"><img src="../img/home/vbet.png"width="375"></p>
+ </div>
+
+
+<footer th:fragment="footer">
+    <div class="container-fluid footcontainer">
+            <div class="hestia-bottom-footer-content">
+                <ul id="menu-footer" class="footer-menu pull-left">
+                    <li1 id="menu-item-546" class="gauche" align="left"><a href="mailto:contact@monpetitbet.fr"><t>Contact&emsp;&emsp;&emsp;&emsp;</t></a></li1>
+                    <li1 id="menu-item-547" class="centre" align="left" ><a href=""><t>Mentions Légales&emsp;&emsp;&emsp;&emsp;</t></a></li1>
+                    <li1 id="menu-item-817" class="droite" align="left"><a href=""><t>Politique de Confidentialité</t></a></li1></ul>
+                <div class="copyright pull-right"><t> MonPetitBet 2020</t></div>
+            </div>
+    </div>
+</footer>
+
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Connect - MPB</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link href="css/home.css" rel="stylesheet" type="text/css">
+	<link href="css/reg.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body>
+
+<nav th:insert="~{base ::menu}" class="navbar navbar-inverse navbar-expand-md"></nav>
+
+<header th:replace="~{base ::headercommon('Connexion')}" class="art1"></header>
+	<div class="container">
+		<h3 th:if="${errorMsg!=null}" th:text="${errorMsg}" class="error"></h3>
+		<h3 th:if="${succesMsg!=null}" th:text="${succesMsg}" class="succes"></h3>
+		<form method="POST" action="login">
+        <h3 class="login">Pseudo</h3>
+		<p><input id="boite" type="text" name="pseudo"></p>
+        <h3 class="login">Mot de passe</h3>
+		<p><input id="boite" type="password" name="mdp" ></p>
+        <p></p>
+		<p><input id="connexion" type="submit" value="Connexion"></p>
+        </form>
+
+	<div>
+		<a href="register">Pas encore inscrit ? Cliquez ici</a>
+	</div>
+
+	<div id="retour">
+		<a id="retour" href="index"> &#8592 Retour à la page d'accueil </a>
+	</div>
+	</div>
+</body>
+
+
+</html>

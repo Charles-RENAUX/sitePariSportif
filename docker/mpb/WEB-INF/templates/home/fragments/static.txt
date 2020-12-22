@@ -1,0 +1,43 @@
+<div th:fragment="betclic">
+    <h2>Présentation</h2>
+    <p></p>
+    <h3>En bref :</h3>
+    
+    <p></p>	
+    <h3>Ses atouts décisifs :</h3>
+	
+    <p></p>
+    <h3>Bonus :</h3>
+	
+    <p></p>
+    <h3>Paiement :</h3>
+	
+    <p></p>
+    <h3>Ergonomie :</h3>
+
+    </div>
+
+<div th:fragment="betclic" class="bookmakers">
+    <h2>Offre de Bienvenue</h2>
+    <p></p>
+    <p class="sub">
+    <p class="sub">Conditions spécifiques : </p>
+    <p></p>
+
+    <p></p>
+    <p class ="sub">Exemple : (pari remboursé avec un 1er dépôt de 50e)</p>
+    
+    </div>
+
+<div th:fragment="betclic" class="bookmakers">
+    <h2>Offre de Parrainage</h2>
+    <p></p>
+    <p class="sub"></p>
+
+    <p></p>
+    <p class="sub">Pour le parrain : </p>
+
+    <p></p>
+    <p class="sub">Pour le filleul : </p>
+
+</div>
